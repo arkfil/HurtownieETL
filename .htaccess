@@ -1,0 +1,16 @@
+#DirectoryIndex index.php views/a_user/index.php views/not_a_user/hub.html views/not_a_user/login.html views/not_a_user/register.html
+
+
+
+RewriteEngine On
+
+
+RewriteRule ^(.*)\.(gif|jpg|png|jpeg|css|js|swf|ttf|woff|woff2)$ $1.$2 [L,NC]
+
+RewriteRule ^([^/]+)/?([^/]*)/?([^/]*)/?([^/]*)/?$ index.php?url=$1&purpose=$2&what=$3&number=$4 [L,QSA]
+
+
+
+
+
+#RewriteRule ^(.*)$ /index.php/$1 [L,QSA]
