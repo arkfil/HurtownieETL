@@ -7,7 +7,7 @@ RewriteEngine On
 
 RewriteRule ^(.*)\.(gif|jpg|png|jpeg|css|js|swf|ttf|woff|woff2)$ $1.$2 [L,NC]
 
-RewriteRule ^([^/]+)/?([^/]*)/?([^/]*)/?([^/]*)/?$ index.php?url=$1&purpose=$2&what=$3&number=$4 [L,QSA]
+RewriteRule ^([^/]+)/?([^/]*)/?([^/]*)/?([^/]*)/?$ index.php?url=$1&purpose=$2&id=$3&data=$4 [L,QSA]
 
 
 
