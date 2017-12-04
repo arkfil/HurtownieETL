@@ -10,6 +10,8 @@ class ExtractHandler{
     $ceneoDOM = $domDataLoader->loadData('https://www.ceneo.pl/'.$productId.'#tab=reviews');
 
 
+
+
     // echo $ceneoDOM->getElementById('body')->nodeValue;
 
 

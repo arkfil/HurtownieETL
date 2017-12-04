@@ -16,15 +16,15 @@ class Opinion
 
   function __construct($pParentOpinion, $pDate, $pSummary, $pStars, $pAuthor, $pIsPositive, $pUpVotesCount, $pDownVotesCount, $pFeatures)
   {
-    $parentOpinion = $pParentOpinion;
-    $date = $pDate;
-    $summary = $pSummary;
-    $stars = $pStars;
-    $author = $pAuthor;
-    $isPositive = $pIsPositive;
-    $upVotesCount = $pUpVotesCount;
-    $downVotesCount = $pDownVotesCount;
-    $features = $pFeatures;
+    $this->parentOpinion = $pParentOpinion;
+    $this->date = $pDate;
+    $this->summary = $pSummary;
+    $this->stars = $pStars;
+    $this->author = $pAuthor;
+    $this->isPositive = $pIsPositive;
+    $this->upVotesCount = $pUpVotesCount;
+    $this->downVotesCount = $pDownVotesCount;
+    $this->features = $pFeatures;
   }
 
   public function setParentOpinion($pParentOpinion){    $this->parentOpinion = $pParentOpinion;  }
@@ -48,6 +48,28 @@ class Opinion
   public function getDownVotesCount(){      return $this->downVotesCount;  }
   public function getFeatures(){            return $this->features;  }
 
+
+
+  public function __toString(){
+    $opStr = "Date: ".$this->date.'<br>'.
+           "Summary: ".$this->summary.'<br>'.
+           "Stars: ".$this->stars.'<br>'.
+           "Author: ".$this->author.'<br>'.
+           "Positive: ".$this->isPositive.'<br>'.
+           "Up votes: ".$this->upVotesCount.'<br>'.
+           "Down votes: ".$this->downVotesCount.'<br>';
+
+     if(is_array($this->features)){
+
+        foreach ($this->features as &$feature) {
+          $opStr = $opStr.'   -'.$feature.'<br>';
+        }
+
+     }
+
+
+     return $opStr;
+  }
 
 }
 

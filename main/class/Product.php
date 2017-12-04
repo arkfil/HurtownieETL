@@ -23,19 +23,30 @@ class Product{
 
 
   function __construct($pType, $pBrand, $pModel, $pRemarks, $pOpinions) {
-    $type = $pType;
-    $brand = $pBrand;
-    $model = $pModel;
-    $remarks = $pRemarks;
-    $opinions = $pOpinions;
+    $this->type = $pType;
+    $this->brand = $pBrand;
+    $this->model = $pModel;
+    $this->remarks = $pRemarks;
+    $this->opinions = $pOpinions;
   }
 
 
   public function __toString()
   {
-      return 'Type: '.$this->type.'<br>'.
-       'Brand: '.$this->brand.'<br>'.
-       'Model: '.$this->model.'<br>';
+    $productStr = 'Type: '.$this->type.'<br>'.
+     'Brand: '.$this->brand.'<br>'.
+     'Model: '.$this->model.'<br>'.
+     'Opinions: <br>';
+
+     if(is_array($this->opinions)){
+        foreach ($this->opinions as &$opinion) {
+          $productStr = $productStr.'  - '.$opinion.'<br>';
+        }
+
+     }
+
+
+      return $productStr;
   }
 
 }

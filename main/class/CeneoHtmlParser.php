@@ -38,15 +38,33 @@ class CeneoHtmlParser{
     $productInfoArr = self::getElementsByClass($contentNode, 'nav', 'breadcrumbs');
     $productModelElement = self::getElementsByClass($productInfoArr[0], 'strong', 'js_searchInGoogleTooltip')[0];
 
-
-
     return $productModelElement->nodeValue;
   }
 
 
   public function retriveOpinions($ceneoDom){
     // TO DO
+
+    $contentNode=$ceneoDom->getElementById("body");
+    $opinionPages = self::getElementsByClass($contentNode, 'div', 'pagination');
+
+    $pages = $opinionPages[0]->getElementsByTagName('a');
+    echo 'lallalalallalalal:<br>';
+    // echo $pages->nodeValue; SHOW MUST GO ON
     // returns Array
+
+    echo $pages[0]->nodeValue;
+
+
+
+    echo '<br><br>';
+  }
+
+  private function retriveOpinionsStep(){
+
+  }
+  private function getOpinionsFromGivenCode(){
+
   }
 
 

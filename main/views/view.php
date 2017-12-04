@@ -24,10 +24,6 @@
   // echo '<br>';
   // echo $ceneoParser->retriveProductModel($ceneoDOM);
   //
-
-
-
-
   ?>
 
 <html>
