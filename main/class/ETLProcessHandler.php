@@ -8,7 +8,7 @@ class ETLProcessHandler{
     $tr = new TransformHandler;
 
     $data = $ex->extractData($productId);
-    $productObj = $tr->transformData($data);
+    $productObj = $tr->transformData($data,$productId);
 
 
     // TO DO

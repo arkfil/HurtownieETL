@@ -1,16 +1,5 @@
 <?php
-echo "
-{
- lp: 0,
- status: 'ok'
-}
-";
-
-
-
-
-
-
+header('Content-type:application/json;charset=utf-8');
 if($_GET['purpose']=='ETL'){
   if(!empty($_GET['id'])){
     $ETLHndl = new ETLProcessHandler;
@@ -18,7 +7,16 @@ if($_GET['purpose']=='ETL'){
   }else{
     echo 'error';
   }
-
+}else if($_GET['purpose']=='E'){
+  if(!empty($_GET['id'])){
+    $eh = new ExtractHandler;
+    $data =  $eh->extractData($_GET['id']);
+    echo '{
+        "status":"ok",
+        "object-type:":"rough-html",
+        "data":"'.urlencode($data[0]->saveHTML($data[0])).'"
+      }';
+  }
 }else if($_GET['purpose']=='T'){
 
   //TO DO
@@ -28,7 +26,7 @@ if($_GET['purpose']=='ETL'){
   // TO DO
 
 }else{
-  echo 'error';
+  echo '{"status":"error","object-type":"error-details","data":{"error-code":1,"description":"Something is wrong with url address"}}';
 }
 
 

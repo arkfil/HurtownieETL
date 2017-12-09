@@ -2,7 +2,7 @@
 
 class Opinion
 {
-
+  private $id;
   private $parentOpinion;
   private $date;
   private $summary;
@@ -14,8 +14,9 @@ class Opinion
 
   private $features;
 
-  function __construct($pParentOpinion, $pDate, $pSummary, $pStars, $pAuthor, $pIsPositive, $pUpVotesCount, $pDownVotesCount, $pFeatures)
+  function __construct($pId, $pParentOpinion, $pDate, $pSummary, $pStars, $pAuthor, $pIsPositive, $pUpVotesCount, $pDownVotesCount, $pFeatures)
   {
+    $this->id = $pId;
     $this->parentOpinion = $pParentOpinion;
     $this->date = $pDate;
     $this->summary = $pSummary;
@@ -27,6 +28,7 @@ class Opinion
     $this->features = $pFeatures;
   }
 
+  public function setId($pId){                          $this->id = $pId; }
   public function setParentOpinion($pParentOpinion){    $this->parentOpinion = $pParentOpinion;  }
   public function setDate($pDate){                      $this->date = $pDate;  }
   public function setSummary($pSummary){                $this->summary = $pSummary;  }
@@ -38,6 +40,7 @@ class Opinion
   public function setFeatures($pFeatures){              $this->features = $pFeatures;  }
 
 
+  public function getId(){                  return $this->id; }
   public function getParentOpinion(){       return $this->parentOpinion;  }
   public function getDate(){                return $this->date;  }
   public function getSummary(){             return $this->summary;  }
@@ -51,23 +54,29 @@ class Opinion
 
 
   public function __toString(){
-    $opStr = "Date: ".$this->date.'<br>'.
-           "Summary: ".$this->summary.'<br>'.
-           "Stars: ".$this->stars.'<br>'.
-           "Author: ".$this->author.'<br>'.
-           "Positive: ".$this->isPositive.'<br>'.
-           "Up votes: ".$this->upVotesCount.'<br>'.
-           "Down votes: ".$this->downVotesCount.'<br>';
+    $opStr = '{'.
+           '"id":"'.$this->id.'",'.
+           '"date":"'.$this->date.'",'.
+           '"summary":"'.$this->summary.'",'.
+           '"stars":"'.$this->stars.'",'.
+           '"author":"'.$this->author.'",'.
+           '"positive":"'.$this->isPositive.'",'.
+           '"up-votes":"'.$this->upVotesCount.'",'.
+           '"down-votes":"'.$this->downVotesCount.'",'.
+           '"features":[';
 
      if(is_array($this->features)){
-
-        foreach ($this->features as &$feature) {
-          $opStr = $opStr.'   -'.$feature.'<br>';
-        }
-
+       $numberOfFeatures = sizeof($this->features);
+       $numberOfFeatures-=1;
+       for($f=0;$f<=$numberOfFeatures;++$f){
+         if($f!=$numberOfFeatures)
+            $opStr = $opStr.$this->features[$f].',';
+          else
+            $opStr = $opStr.$this->features[$f];
+       }
      }
 
-
+     $opStr = $opStr."]}";
      return $opStr;
   }
 

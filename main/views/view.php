@@ -1,30 +1,4 @@
 <!DOCTYPE html>
-  <?php
-
-
-  $etlHndl = new ETLProcessHandler;
-  $productObj = $etlHndl->start('45095617');
-
-  echo $productObj;
-
-  //
-  // $domDataLoader = new DomDataLoader();
-  // $ceneoDOM = $domDataLoader->loadData('https://www.ceneo.pl/45095617#tab=click');
-  //
-  // $ceneoDOM = $domDataLoader->loadData('https://www.ceneo.pl/52404834#tab=reviews');
-  //
-  //
-  // $ceneoParser = new CeneoHtmlParser;
-  //
-  //
-  //
-  // echo $ceneoParser->retriveProductBrand($ceneoDOM);
-  // echo '<br>';
-  // echo $ceneoParser->retriveProductType($ceneoDOM);
-  // echo '<br>';
-  // echo $ceneoParser->retriveProductModel($ceneoDOM);
-  //
-  ?>
 
 <html>
   <head>

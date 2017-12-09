@@ -1,7 +1,7 @@
 <?php
 
 class Product{
-
+  private $id;
   private $type;
   private $brand;
   private $model;
@@ -9,6 +9,7 @@ class Product{
   private $remarks;
   private $opinions;
 
+  public function setId($pId){             $this->id = $pId; }
   public function setType($pType){         $this->type = $pType; }
   public function setBrand($pBrand){       $this->brand = $pBrand; }
   public function setModel($pModel){       $this->model = $pModel; }
@@ -22,7 +23,8 @@ class Product{
   public function getOpinions(){  return $this->opinions; }
 
 
-  function __construct($pType, $pBrand, $pModel, $pRemarks, $pOpinions) {
+  function __construct($pId, $pType, $pBrand, $pModel, $pRemarks, $pOpinions) {
+    $this->id = $pId;
     $this->type = $pType;
     $this->brand = $pBrand;
     $this->model = $pModel;
@@ -33,19 +35,29 @@ class Product{
 
   public function __toString()
   {
-    $productStr = 'Type: '.$this->type.'<br>'.
-     'Brand: '.$this->brand.'<br>'.
-     'Model: '.$this->model.'<br>'.
-     'Opinions: <br>';
+
+    $productStr = "{".
+      '"status":"ok",'.
+      '"object-type":"product",'.
+      '"data":{'.
+              '"type":"'.$this->type.'",'.
+              '"remarks":"'.$this->remarks.'",'.
+              '"brand":"'.$this->brand.'",'.
+              '"model":"'.$this->model.'",'.
+              '"opinions":[';
 
      if(is_array($this->opinions)){
-        foreach ($this->opinions as &$opinion) {
-          $productStr = $productStr.'  - '.$opinion.'<br>';
-        }
-
+       $opinionsCount = sizeof($this->opinions);
+       $opinionsCount-=1;
+       for($j=0;$j<=$opinionsCount;++$j){
+         if($j!=$opinionsCount)
+            $productStr = $productStr.$this->opinions[$j].',';
+          else
+            $productStr = $productStr.$this->opinions[$j];
+       }
      }
 
-
+     $productStr = $productStr."]}}";
       return $productStr;
   }
 

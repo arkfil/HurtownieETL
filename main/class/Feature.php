@@ -23,7 +23,7 @@ class Feature{
 
 
 public function __toString(){
-  return "Name: ".$this->name.'<br>'."Advantage: ".$this->isAdv.'<br>';
+  return '{"name":"'.$this->name.'","advantage":'.$this->isAdv.'}';
 }
 
 }
