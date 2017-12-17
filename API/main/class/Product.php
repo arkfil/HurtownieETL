@@ -16,6 +16,7 @@ class Product{
   public function setRemarks($pRemarks){   $this->remarks = $pRemarks; }
   public function setOpinions($pOpinions){ $this->opinions = $pOpinions; }
 
+  public function getId(){        return $this->id; }
   public function getType(){      return $this->type; }
   public function getBrand(){     return $this->brand; }
   public function getModel(){     return $this->model; }
@@ -36,10 +37,7 @@ class Product{
   public function __toString()
   {
 
-    $productStr = "{".
-      '"status":"ok",'.
-      '"object-type":"product",'.
-      '"data":{'.
+    $productStr = '{'.
               '"type":"'.$this->type.'",'.
               '"brand":"'.$this->brand.'",'.
               '"model":"'.$this->model.'",'.
@@ -69,7 +67,7 @@ class Product{
        }
      }
 
-     $productStr = $productStr."]}}";
+     $productStr = $productStr."]}";
 
 
 

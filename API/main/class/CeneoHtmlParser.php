@@ -102,7 +102,6 @@ class CeneoHtmlParser{
     $opinionsListElements = self::getElementsByClass($opinionsList, 'li', 'review-box');
 
     for($j = 0;$j<sizeof($opinionsListElements);++$j){
-      $parentOpinion = "";
       $opId = urlencode(trim(   $this -> retriveOpinionId($opinionsListElements[$j])));
       $date = urlencode(trim(   $this -> retriveOpinionDate($opinionsListElements[$j])));
       $summary = urlencode(trim(    $this -> retriveOpinionSummary($opinionsListElements[$j])));
@@ -114,7 +113,7 @@ class CeneoHtmlParser{
       $features = $this -> retriveOpinionFeatures($opinionsListElements[$j]);
 
 
-      $opninionsArray[] = new Opinion($opId, $parentOpinion, $date, $summary, $stars, $author, $isPositive, $upVotesCount, $downVotesCount, $features);
+      $opninionsArray[] = new Opinion($opId, $date, $summary, $stars, $author, $isPositive, $upVotesCount, $downVotesCount, $features);
     }
 
   }
@@ -164,21 +163,6 @@ class CeneoHtmlParser{
     return $featuresArr;
   }
 
-
-
-
-
-// ngb, nmb
-// n/ngb
-// nTb, n", n.n"nkb
-// nmpx
-// nmhz
-// nmah,
-// nwh
-// n mpx
-//n cale, n cali, ,, nm
-// Utiliyy
-
   private static function cutOutRemarks($ceneoDom){
       $contentNode=$ceneoDom->getElementById("body");
       $productInfoArr = self::getElementsByClass($contentNode, 'nav', 'breadcrumbs');
@@ -200,12 +184,14 @@ class CeneoHtmlParser{
       if (preg_match(
       '/[0-9]{0,}[.,]{0,1}[0-9]+((GB)|(gb)|(Gb)|(MB)|(Mb)|(mb)|(KB)|(Kb)|(kb)|(TB)(Tb)|(tb)|(mhz)|(Mhz)|(MHZ)|(mpx)|(Mpx)|(MPX)|(Mah)|(mah)|(MAH)|(wh)|(Wh)|(WH)|(cali)|(Cali)|(cale)|(Cale)|(cala)|(Cala)|(")){1}/',
       $stringTitle,$matches)) {
-        $remarksArr[] = new Remark( urlencode(trim($matches[0])));
+        if(trim($matches[0])!='()' || strlen(trim($matches[0]))>0)
+          $remarksArr[] = new Remark( urlencode(trim($matches[0])));
       }
       if (preg_match(
       '/[0-9]{0,}[.,]{0,1}[0-9]+\s{1}((GB)|(gb)|(Gb)|(MB)|(Mb)|(mb)|(KB)|(Kb)|(kb)|(TB)(Tb)|(tb)|(mhz)|(Mhz)|(MHZ)|(mpx)|(Mpx)|(MPX)|(Mah)|(mah)|(MAH)|(wh)|(Wh)|(WH)|(cali)|(Cali)|(cale)|(Cale)|(cala)|(Cala)|(")){1}/',
       $stringTitle,$matches)) {
-        $remarksArr[] = new Remark( urlencode(trim($matches[0])));
+        if(trim($matches[0])!='()' || strlen(trim($matches[0]))>0)
+          $remarksArr[] = new Remark( urlencode(trim($matches[0])));
       }
 
 
@@ -252,7 +238,6 @@ class CeneoHtmlParser{
   public static function getOpinionsCount($roughPage){
         $contentNode=$roughPage->getElementById("body");
         $reviewCountString = self::getElementsByClass($contentNode, 'li', 'reviews')[0];
-
 
         $opinionsCount = filter_var($reviewCountString->nodeValue, FILTER_SANITIZE_NUMBER_INT);
         if(is_numeric($opinionsCount))

@@ -3,7 +3,7 @@
 class Opinion
 {
   private $id;
-  private $parentOpinion;
+  // private $parentOpinion;
   private $date;
   private $summary;
   private $stars;
@@ -14,10 +14,10 @@ class Opinion
 
   private $features;
 
-  function __construct($pId, $pParentOpinion, $pDate, $pSummary, $pStars, $pAuthor, $pIsPositive, $pUpVotesCount, $pDownVotesCount, $pFeatures)
+  function __construct($pId, $pDate, $pSummary, $pStars, $pAuthor, $pIsPositive, $pUpVotesCount, $pDownVotesCount, $pFeatures)
   {
     $this->id = $pId;
-    $this->parentOpinion = $pParentOpinion;
+    // $this->parentOpinion = $pParentOpinion;
     $this->date = $pDate;
     $this->summary = $pSummary;
     $this->stars = $pStars;
@@ -29,7 +29,7 @@ class Opinion
   }
 
   public function setId($pId){                          $this->id = $pId; }
-  public function setParentOpinion($pParentOpinion){    $this->parentOpinion = $pParentOpinion;  }
+  // public function setParentOpinion($pParentOpinion){    $this->parentOpinion = $pParentOpinion;  }
   public function setDate($pDate){                      $this->date = $pDate;  }
   public function setSummary($pSummary){                $this->summary = $pSummary;  }
   public function setStars($pStars){                    $this->stars = $pStars;  }
@@ -41,7 +41,7 @@ class Opinion
 
 
   public function getId(){                  return $this->id; }
-  public function getParentOpinion(){       return $this->parentOpinion;  }
+  // public function getParentOpinion(){       return $this->parentOpinion;  }
   public function getDate(){                return $this->date;  }
   public function getSummary(){             return $this->summary;  }
   public function getStars(){               return $this->stars;  }
