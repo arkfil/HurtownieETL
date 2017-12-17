@@ -41,16 +41,28 @@ class Product{
       '"object-type":"product",'.
       '"data":{'.
               '"type":"'.$this->type.'",'.
-              '"remarks":"'.$this->remarks.'",'.
               '"brand":"'.$this->brand.'",'.
               '"model":"'.$this->model.'",'.
-              '"opinions":[';
+               '"remarks":[';
+     if(is_array($this->remarks)){
+       $rmarksCount = sizeof($this->remarks);
+       $rmarksCount-=1;
+       for($j=0;$j<=$rmarksCount;++$j){
+         if($j!=$rmarksCount && $rmarksCount!=0)
+            $productStr = $productStr.$this->remarks[$j].',';
+          else
+            $productStr = $productStr.$this->remarks[$j];
+       }
+     }
+
+
+    $productStr=$productStr.'],"opinions":[';
 
      if(is_array($this->opinions)){
        $opinionsCount = sizeof($this->opinions);
        $opinionsCount-=1;
        for($j=0;$j<=$opinionsCount;++$j){
-         if($j!=$opinionsCount)
+         if($j!=$opinionsCount && $opinionsCount!=0)
             $productStr = $productStr.$this->opinions[$j].',';
           else
             $productStr = $productStr.$this->opinions[$j];
@@ -58,6 +70,11 @@ class Product{
      }
 
      $productStr = $productStr."]}}";
+
+
+
+
+
       return $productStr;
   }
 
