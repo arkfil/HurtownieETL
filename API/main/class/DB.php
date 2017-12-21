@@ -1,13 +1,23 @@
 <?php
 
 class DB{
-  private const SERVERNAME = "localhost";
-  private const USERNAME = "user";
-  private const PASSWORD = "password";
+  private $serverName;
+  private $userNname;
+  private $password;
+  private $dbName;
 
-  private static function connect(){
+  function __construct($pServerName,$pUserNname,$pPassword,$pDbName){
+    $this->serverName=$pServerName;
+    $this->userNname=$pUserNname;
+    $this->password=$pPassword;
+    $this->dbName = $pDbName;
+  }
+
+
+
+  public function connect(){
     try {
-      $connection = new PDO("mysql:host=".self::SERVERNAME.";dbname=note_db", self::USERNAME, self::PASSWORD);
+      $connection = new PDO("mysql:host=".$this->serverName.";dbname=".$this->dbName, $this->userNname, $this->password);
       // set the PDO error mode to exception
       $connection -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       return $connection;
@@ -16,7 +26,7 @@ class DB{
       return "%";
     }
   }
-  private static function insertStatement($connection, $statement){
+  public function insertStatement($connection, $statement){
     try {
       $connection->exec($statement);
       return $connection->lastInsertId();
@@ -24,7 +34,7 @@ class DB{
       return "%";
     }
   }
-  private static function selectWhole($connection, $statement){
+  public function selectWhole($connection, $statement){
   try {
       $stmt = $connection->prepare($statement);
       $stmt->execute();
@@ -37,7 +47,7 @@ class DB{
     return "%";
   }
 }
-private static function selectOne($connection, $statement){
+public function selectOne($connection, $statement){
   try {
       $stmt = $connection->prepare($statement);
       $stmt->execute();
@@ -48,7 +58,7 @@ private static function selectOne($connection, $statement){
     return "%";
   }
 }
-private static function checkOccurenceCount($connection, $statement){
+public function checkOccurenceCount($connection, $statement){
   try {
       $stmt = $connection->prepare($statement);
       $stmt->execute();
