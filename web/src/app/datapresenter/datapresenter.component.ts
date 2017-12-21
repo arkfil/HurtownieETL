@@ -9,14 +9,14 @@ import {EtlService} from '../etl.service';
   styleUrls: ['./datapresenter.component.css']
 })
 export class DatapresenterComponent implements OnInit {
-  etldata: any;
+  etlData: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private _etl: EtlService) {
     this.route.params.subscribe(res => console.log(res.id));
    }
 
   ngOnInit() {
-    this._etl.etlData.subscribe(res => this.etldata = res);
+    this._etl.etlData.subscribe(res => this.etlData = res);
   }
 sendMeHome(){
   this.router.navigate([''])

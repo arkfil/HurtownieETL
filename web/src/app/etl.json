@@ -1,0 +1,940 @@
+{
+    "status": "ok",
+    "object-type": "product",
+    "data": {
+        "type": "Smartfony",
+        "remarks": "",
+        "brand": "Samsung",
+        "model": "Samsung+Galaxy+J5+2017+J530F+Dual+Sim+16GB+Z%C5%82oty",
+        "opinions": [
+            {
+                "id": "5089804",
+                "date": "2017-10-02+10%3A36%3A05",
+                "summary": "%C5%81adny+i+funkcjonalny+telefon.+Martwi+mnie+tylko+niewymienna+bateria.+Przeniesienie+danych+ze+starego+tel.+bardzo+proste.+Jest+nawet+lekki+jak+na+5.2+cala+.+Szybko%C5%9B%C4%87+dzia%C5%82ania+jest+bardziej+niz+zadowalaj%C4%85ca.+Polecamm+ten+sprz%C4%99t+wszystkim+kt%C3%B3rzy+nie+chc%C4%85+wydawa%C4%87+maj%C4%85tku+a+mie%C4%87+bardzo+dobry+telefon.",
+                "stars": "5",
+                "author": "kmerak",
+                "positive": "1",
+                "up-votes": "1",
+                "down-votes": "0",
+                "features": []
+            },
+            {
+                "id": "6243906",
+                "date": "2017-11-23+09%3A49%3A19",
+                "summary": "Mia%C5%82am+ju%C5%BC+wiele+telefon%C3%B3w%2C+ten+jest+%C5%9Bwietny%21+Bateri%C4%99+trzyma+24h+przy+w%C5%82%C4%85czonych+danych+kom%C3%B3rkowych+i+w%C5%82%C4%85czonych+aplikacjach+%3A%29+%C5%9Awietny+aparat+13Mpx+w+ka%C5%BCdej+z+kamer+to+du%C5%BCy+plus%2C+du%C5%BCym+zaskoczeniem+by%C5%82a+dla+mnie+lampa+LED+przy+przedniej+kamerce.+Atutem+jest+r%C3%B3wnie%C5%BC+dual+SIM.+Smartfon+p%C5%82ynnie+pracuje%2C+%C5%82adnie+wygl%C4%85da%2C+jest+por%C4%99czny+mimo+wielko%C5%9Bci+wy%C5%9Bwietlacza.+Po+3+miesi%C4%85cach+u%C5%BCytkowania+mog%C4%99+go+%C5%9Bmia%C5%82o+poleci%C4%87.",
+                "stars": "5",
+                "author": "osek-n",
+                "positive": "1",
+                "up-votes": "1",
+                "down-votes": "0",
+                "features": [
+                    {
+                        "name": "czas+pracy+na+baterii",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "funkcjonalno%C5%9B%C4%87",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "latwosc+obslugi",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nie+grzeje+si%C4%99",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nowy+design",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "wygl%C4%85d",
+                        "advantage": 1
+                    }
+                ]
+            },
+            {
+                "id": "4987914",
+                "date": "2017-08-29+13%3A02%3A06",
+                "summary": "Wydaje+si%C4%99%2C+%C5%BCe+stosunek+ceny+do+mo%C5%BCliwo%C5%9Bci+smartfona+jest+zadawalaj%C4%85cy.+Bezpo%C5%9Brednio+po+dokonaniu+zakupu+trudno+oceni%C4%87+takie+cechy+jak+np.+czas+pracy+na+baterii.",
+                "stars": "4",
+                "author": "Grzegorz",
+                "positive": "1",
+                "up-votes": "1",
+                "down-votes": "0",
+                "features": []
+            },
+            {
+                "id": "4991213",
+                "date": "2017-08-30+12%3A41%3A15",
+                "summary": "dzia%C5%82a+szybko+i+dobrze%2C+d%C5%82ugi+czas+pracy+na+baterii%2C+ostry+i+kontrastowy+wy%C5%9Bwietlacz",
+                "stars": "4",
+                "author": "user",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": []
+            },
+            {
+                "id": "6311780",
+                "date": "2017-12-08+12%3A14%3A57",
+                "summary": "Bardzo+fajny+telefon+ma+wszystko+czego+potrzebuje+a+nawet+wiecej",
+                "stars": "4%2C5",
+                "author": "Barbara",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": []
+            },
+            {
+                "id": "5001839",
+                "date": "2017-09-02+01%3A28%3A22",
+                "summary": "Komentarz+do+pp516.+Odszedlem+z+Play+%28Pay+and+pray%29+bo+ciagle+mialem+ten+sam+problem.+Nieodebrane+polaczenia+i+smsy+o+nich.+Nawet+gdy+zasieg+byl+na+maxa.",
+                "stars": "5",
+                "author": "Yurek",
+                "positive": "1",
+                "up-votes": "1",
+                "down-votes": "1",
+                "features": [
+                    {
+                        "name": "brak+wad",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "czas+pracy+na+baterii",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "funkcjonalny",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "latwosc+obslugi",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nie+grzeje+si%C4%99",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nowoczesny",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nowy+design",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "szybki",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "wygl%C4%85d",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "brak+mo%C5%BCliwo%C5%9Bci+wymiany+baterii",
+                        "advantage": 0
+                    }
+                ]
+            },
+            {
+                "id": "5012090",
+                "date": "2017-09-06+10%3A35%3A20",
+                "summary": "Dzia%C5%82a+bardzo+p%C5%82ynnie%2C+%C5%9Bwietny+ekran+Super+amOLED+gdzie+czarny+jest+naprawd%C4%99+czarny.+Filmy+wygl%C4%85daj%C4%85+pi%C4%99knie+mimo+%C5%BCe+to+tylko+HD+%281280%C3%97720%29.+%C5%9Awietny+wygl%C4%85d.+Bateria+mog%C5%82a+by+by%C4%87+wymienna.+Wada+jest+obudowa%2C+z+jednej+strony+super+%C5%BCe+metalowa%2C+no+ale+%C5%9Bliska%2C+wi%C4%99c+mo%C5%BCe+%C5%82atwo+wypa%C5%9B%C4%87+z+d%C5%82oni.+Prawdziwy+Dual-Sim%2C+czyli+kart%C4%99+SD+mo%C5%BCna+zawsze+wsadzi%C4%87.+W+por%C3%B3wnaniu+z+poprzednimi+J5%2C+to+ma+czujnik+%C5%9Bwiat%C5%82a%2C+%C5%BCyroskop+i+2x+wi%C4%99cej+rdzeni%2C+o+ale+trzeba+si%C4%99+zastanowi%C4%87+czy+te+funkcje+s%C4%85+nam+potrzebne%2C+bo+poprzednie+wersje+du%C5%BCo+ta%C5%84sze+i+podobnie+dzia%C5%82aj%C4%85.",
+                "stars": "5",
+                "author": "Oled+jest+najlepszy",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": [
+                    {
+                        "name": "czas+pracy+na+baterii",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "funkcjonalno%C5%9B%C4%87",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "wygl%C4%85d",
+                        "advantage": 1
+                    }
+                ]
+            },
+            {
+                "id": "5075259",
+                "date": "2017-09-26+17%3A42%3A09",
+                "summary": "Polecam+Superowy+sprzet+za+ta+kase+rewelacja",
+                "stars": "5",
+                "author": "Tom",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": []
+            },
+            {
+                "id": "4832730",
+                "date": "2017-07-09+09%3A11%3A43",
+                "summary": "wszystko+jest+w+porz%C4%85dku+%21%21%21",
+                "stars": "5",
+                "author": "Vadim",
+                "positive": "1",
+                "up-votes": "3",
+                "down-votes": "1",
+                "features": []
+            },
+            {
+                "id": "4934858",
+                "date": "2017-08-10+23%3A10%3A49",
+                "summary": "Prawie+wszystko+dzia%C5%82a+jak+nale%C5%BCy+%3A+bardzo+dobry+ekran%2C+szybka+praca.+Ma+tylko+jedna+powa%C5%BCn%C4%85+wad%C4%99+%3A+nie+dzia%C5%82a+dobrze+w+sieci+Play.+Przy+w%C5%82%C4%85czonym+LTE+cz%C4%99%C5%9B%C4%87+przychodz%C4%85cych+po%C5%82%C4%85cze%C5%84+g%C5%82osowych+jest+odrzucanych+%28losowo%29%2C+Infolinia+Play+m%C3%B3wi%2C+%C5%BCe+wina+telefonu%2C+serwis+Samsunga%2C+%C5%BCe+wina+sieci+Play.+Ani+jedni+ani+drudzy+nie+wykazuj%C4%85+zbytniego+zaanga%C5%BCowania+w+rozwi%C4%85zanie+problemu.+Dodam+%C5%BCe+z+wcze%C5%9Bniejszym+telefonem+nie+by%C5%82o+takich+problem%C3%B3w+w+Play+z+t%C4%85+sam%C4%85+karta+SIM.%0D%0ATak%2C+%C5%BCe+nie+polecam+tego+modelu%2C+w+ko%C5%84cu+mo%C5%BCliwo%C5%9B%C4%87+odbierania+po%C5%82%C4%85cze%C5%84+jest+do%C5%9B%C4%87+wa%C5%BCn%C4%85+cech%C4%85+telefonu.%0D%0APozdrawiam+pana+serwisanta+z+Samsung+Plaza+Warszawa%2C+kt%C3%B3rzy+proponowa%C5%82+mi+przej%C5%9Bcie+do+sieci+innego+innego+operatora+jako+rozwi%C4%85zanie+problemu.",
+                "stars": "2",
+                "author": "pp516",
+                "positive": "0",
+                "up-votes": "4",
+                "down-votes": "0",
+                "features": [
+                    {
+                        "name": "funkcjonalno%C5%9B%C4%87",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "p%C5%82ynno%C5%9B%C4%87",
+                        "advantage": 0
+                    }
+                ]
+            },
+            {
+                "id": "6360139",
+                "date": "2017-12-18+10%3A32%3A06",
+                "summary": "%C5%81adny+%2Cfunkcjonalny+%2C....wszystko+ok",
+                "stars": "5",
+                "author": "Micha%C5%82",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": [
+                    {
+                        "name": "czas+pracy+na+baterii",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "funkcjonalno%C5%9B%C4%87",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "latwosc+obslugi",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nie+grzeje+si%C4%99",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nowy+design",
+                        "advantage": 1
+                    }
+                ]
+            },
+            {
+                "id": "5067428",
+                "date": "2017-09-23+13%3A03%3A51",
+                "summary": "Produkt+zgodny+z+opisem+%3A%29",
+                "stars": "5",
+                "author": "krzyshol",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": []
+            },
+            {
+                "id": "5038820",
+                "date": "2017-09-14+13%3A11%3A38",
+                "summary": "og%C3%B3lnie+jestem+zadowolona",
+                "stars": "5",
+                "author": "Gocha+P.",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": []
+            },
+            {
+                "id": "5208720",
+                "date": "2017-11-10+09%3A23%3A40",
+                "summary": "Jak+na+razie+jest+fajny",
+                "stars": "5",
+                "author": "M",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": []
+            },
+            {
+                "id": "6331151",
+                "date": "2017-12-12+15%3A48%3A37",
+                "summary": "super+telefon",
+                "stars": "4%2C5",
+                "author": "slawek",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": [
+                    {
+                        "name": "czas+pracy+na+baterii",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "funkcjonalno%C5%9B%C4%87",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "latwosc+obslugi",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nie+grzeje+si%C4%99",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nowy+design",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "wygl%C4%85d",
+                        "advantage": 1
+                    }
+                ]
+            },
+            {
+                "id": "5216537",
+                "date": "2017-11-13+12%3A15%3A26",
+                "summary": "super+telefon",
+                "stars": "5",
+                "author": "Pawe%C5%82",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": []
+            },
+            {
+                "id": "5184375",
+                "date": "2017-11-03+10%3A06%3A11",
+                "summary": "ok",
+                "stars": "5",
+                "author": "nina",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": []
+            },
+            {
+                "id": "5228319",
+                "date": "2017-11-16+01%3A15%3A06",
+                "summary": "Pi%C4%99kne+zdjecia-robi%C4%85+si%C4%99+same+uwielbiam+lekki+telefon+i+bardzo+por%C4%99czny+menu+intuicyjne+b+szybki.",
+                "stars": "5",
+                "author": "karuzela1984",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": [
+                    {
+                        "name": "brak+wad",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "czas+pracy+na+baterii",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "funkcjonalno%C5%9B%C4%87",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "funkcjonalny",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "latwosc+obslugi",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nie+grzeje+si%C4%99",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nowoczesny",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nowy+design",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "p%C5%82ynno%C5%9B%C4%87",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "szybki",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "wygl%C4%85d",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "brak+mo%C5%BCliwo%C5%9Bci+wymiany+baterii",
+                        "advantage": 0
+                    }
+                ]
+            },
+            {
+                "id": "4986446",
+                "date": "2017-08-28+23%3A56%3A47",
+                "summary": "Super+telefon+nic+doda%C4%87+nic+uj%C4%85%C4%87+%3A%29",
+                "stars": "5",
+                "author": "xx",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": []
+            },
+            {
+                "id": "5024066",
+                "date": "2017-09-09+18%3A18%3A02",
+                "summary": "Telefonu+nie+b%C4%99d%C4%99+opisywa%C5%82%2C+bo+opis+mo%C5%BCna+znale%C5%BA%C4%87+a+necie.+Chc%C4%99+podzieli%C4%87+si%C4%99+tylko+%22malym%22+spostrze%C5%BCeniem.+Szybka+jest+beznadziejna%21%21%21+Masakra.+Po+jednym+dniu+dwie+grube+rysy...+Mia%C5%82em+inne+starsze+modele+galaxy+i+tam+nie+by%C5%82o+takiego+problemu.+Nawet+lg+K8+za+500zl+ma+lepszy+ekran%21+Bez+szybki+chroni%C4%85cej+nawet+nie+ma+sensu+si%C4%99+zbli%C5%BCa%C4%87+do+tego+telefonu...+Samsung+powinien+za+taki+telefon+dosta%C4%87+kopy%3A%29+i+to+porz%C4%85dne",
+                "stars": "4",
+                "author": "Luszman",
+                "positive": "1",
+                "up-votes": "1",
+                "down-votes": "2",
+                "features": []
+            },
+            {
+                "id": "5068694",
+                "date": "2017-09-24+13%3A55%3A29",
+                "summary": "Telefon+wygl%C4%85da+bardzo+fajnie%2C+solidnie+wykonany%2C+dzia%C5%82a+bardzo+p%C5%82ynnie.+Na+baterii+dzia%C5%82a+ok.+3+dni.+Dwa+wej%C5%9Bcia+na+karty+SIM+plus+wej%C5%9Bcie+na+kart%C4%99+SD.+Niestety+brak+diody+informuj%C4%85cej+o+powiadomieniach.+Przedni+aparat+niby+13M+ale+zdj%C4%99cia+kiepskiej+jako%C5%9Bci+i+trudno%C5%9B%C4%87+w+ustawieniu+ostro%C5%9Bci.",
+                "stars": "5",
+                "author": "Adamek",
+                "positive": "1",
+                "up-votes": "1",
+                "down-votes": "0",
+                "features": [
+                    {
+                        "name": "czas+pracy+na+baterii",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "funkcjonalno%C5%9B%C4%87",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "latwosc+obslugi",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nowy+design",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "wygl%C4%85d",
+                        "advantage": 1
+                    }
+                ]
+            },
+            {
+                "id": "5025210",
+                "date": "2017-09-10+16%3A51%3A34",
+                "summary": "Telefon+wygl%C4%85da+bardzo+fajnie%2C+solidnie+wykonany%2C+dzia%C5%82a+bardzo+p%C5%82ynnie.+Po+zainstalowaniu+aplikacji+SmartSwitch+Mobile+mo%C5%BCna+skopiowa%C4%87+kontakty%2C+wiadomo%C5%9Bci+i+wszystkie+ustawienia+ze+starego+samsunga.+Po+jednym+dniu+bateria+spad%C5%82a+do+77%25.+Dwa+wej%C5%9Bcia+na+karty+SIM+plus+wej%C5%9Bcie+na+kart%C4%99+SD.",
+                "stars": "5",
+                "author": "Adam",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": [
+                    {
+                        "name": "czas+pracy+na+baterii",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "funkcjonalno%C5%9B%C4%87",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "latwosc+obslugi",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nowy+design",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "wygl%C4%85d",
+                        "advantage": 1
+                    }
+                ]
+            },
+            {
+                "id": "5078096",
+                "date": "2017-09-27+13%3A46%3A01",
+                "summary": "Bateria+super.+Trzyma+bardzo+d%C5%82ugo.+%C5%81adowanie+jej+jest+bardzo+szybki+w+por%C3%B3wnaniu+z+poprzednimi+wersjami+tego+telefonu.+Telefon+dzia%C5%82a+szybko+i+ma+bardziej+zoptymalizowane+kszta%C5%82ty+oraz+funkcjonalno%C5%9Bci.+Jest+dost%C4%99pny+z+najnowsz%C4%85+wersj%C4%85+systemu+Android.+Zalet%C4%85+telefonu+jest+DUAL+SIM.",
+                "stars": "5",
+                "author": "Jacek",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": [
+                    {
+                        "name": "czas+pracy+na+baterii",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "funkcjonalno%C5%9B%C4%87",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "latwosc+obslugi",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nie+grzeje+si%C4%99",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nowy+design",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "wygl%C4%85d",
+                        "advantage": 1
+                    }
+                ]
+            },
+            {
+                "id": "5160153",
+                "date": "2017-10-26+00%3A10%3A02",
+                "summary": "Bardzo+dobry+telefon%2C+moim+zdaniem+o+niebo+lepszy+i+%C5%82adniejszy+od+modelu+J5+2016.+Elegancj%C4%85+zbli%C5%BCony+do+flagowca%2C+wygl%C4%85da+jak+czarny+diament.+Jedyny+brak+to+aparat+bez+stabilizacji+obrazu.+Poza+tym+lepszy+od+serii+A.",
+                "stars": "5",
+                "author": "Adam",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": [
+                    {
+                        "name": "czas+pracy+na+baterii",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "funkcjonalno%C5%9B%C4%87",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "latwosc+obslugi",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nie+grzeje+si%C4%99",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nowy+design",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "wygl%C4%85d",
+                        "advantage": 1
+                    }
+                ]
+            },
+            {
+                "id": "6311290",
+                "date": "2017-12-08+11%3A46%3A16",
+                "summary": "Fajna+zabawka.+M%C3%B3j+pierwszy+telefon+ze+%C5%9Bredniej+p%C3%B3%C5%82ki+cenowej.+Wszystko+%C5%9Bmiga%2C+a+bateria+na+to+d%C5%82ugo+pozwala.+Wy%C5%9Bwietlacz+marzenie%2C+aparat+poprawny%2C+dobry+procesor+i+szybki+Android.",
+                "stars": "5",
+                "author": "Grzesiek",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": []
+            },
+            {
+                "id": "5142431",
+                "date": "2017-10-19+20%3A52%3A11",
+                "summary": "Telefon+samsung+galaksy+J5+spe%C5%82ni%C5%82+moje+oczekiwania.+Jak+na+razie+mile+mnie+zaskakuje.+nowoczesny+wygl%C4%85d%2C+%C5%82atwy+w+obs%C5%82udze%2C+szybki+z+dobrym+aparatem+-+same+superlatywy.+Poelcam",
+                "stars": "5",
+                "author": "Anna",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": [
+                    {
+                        "name": "czas+pracy+na+baterii",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nowy+design",
+                        "advantage": 1
+                    }
+                ]
+            },
+            {
+                "id": "6275672",
+                "date": "2017-11-30+16%3A27%3A42",
+                "summary": "Telefon+najlepszy+jaki+mia%C5%82am%21+Jest+bardzo+trwa%C5%82y+i+wytrzyma%C5%82y.Nie+dor%C3%B3wnuje+ten+marce+%C5%BCadna+inna+marka.%C5%9Awietnie%2Cp%C5%82ynnie+dzia%C5%82a%2Cwszystko+w+jak+najlepszym+porz%C4%85dku.Mam+telefon+ju%C5%BC+ponad+rok+i+czuje+%C5%BCe+nie+zamieni%C5%82abym+go+na+%C5%BCaden+inny.Samsung+najlepsza+marka%21.",
+                "stars": "5",
+                "author": "dominikatokarczy",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": []
+            },
+            {
+                "id": "6275828",
+                "date": "2017-11-30+16%3A51%3A37",
+                "summary": "Za+kr%C3%B3tko+go+mam+aby+wystawi%C4%87+opini%C4%99.+Przy+pocz%C4%85tkowych+ustawieniach+zacz%C4%85%C5%82+si%C4%99+wiesza%C4%87.+Obiektywn%C4%85+ocen%C4%99+m%C3%B3g%C5%82bym+wystawi%C4%87+po+kilku+tygodniach.",
+                "stars": "4",
+                "author": "Witold",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": []
+            },
+            {
+                "id": "6250875",
+                "date": "2017-11-24+17%3A12%3A33",
+                "summary": "Telefon+to+zwyk%C5%82y+%C5%9Bredniak%2C+lecz+do+niczego+nie+mo%C5%BCna+si%C4%99+przyczepi%C4%87.+Wy%C5%9Bwietlacz%2C+bateria+s%C4%85+ok.+Je%C5%9Bli+kto%C5%9B+ma+ma%C5%82e+wymagania%2C+mog%C4%99+poleci%C4%87+jego+zakup.+Je%C5%9Bli+kto%C5%9B+ma+du%C5%BCe+wymagania%2C+to+lepiej+si%C4%99+rozejrze%C4%87+za+innymi%2C+lepszymi+w+tej+cenie.",
+                "stars": "3",
+                "author": "Cezary",
+                "positive": "0",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": []
+            },
+            {
+                "id": "5073033",
+                "date": "2017-09-26+08%3A28%3A56",
+                "summary": "pi%C4%99kny+i+solidnie+wykonany.+Moim+zdaniem+bli%C5%BCej+mu+do+serii+S+ni%C5%BC+klasie+A",
+                "stars": "5",
+                "author": "Hwatek",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": [
+                    {
+                        "name": "czas+pracy+na+baterii",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "funkcjonalno%C5%9B%C4%87",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "latwosc+obslugi",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "wygl%C4%85d",
+                        "advantage": 1
+                    }
+                ]
+            },
+            {
+                "id": "5155521",
+                "date": "2017-10-24+21%3A48%3A10",
+                "summary": "Mam+go+trzy+dni.+Jak+na+razie+wszystko+wg+oczekiwa%C5%84.",
+                "stars": "5",
+                "author": "RK",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "1",
+                "features": []
+            },
+            {
+                "id": "4890919",
+                "date": "2017-07-27+13%3A51%3A24",
+                "summary": "Telefon+bardzo+fajny%2C+elegancji%2C+bateria+te%C5%BC+ca%C5%82kiem+przyzwoicie.+Nie+zacina+si%C4%99%2C+p%C5%82ynnie+otwiera+aplikacji+itp.+%C5%81adne+zdj%C4%99cia+%0D%0APolecam+%21",
+                "stars": "4%2C5",
+                "author": "Angelikaxx",
+                "positive": "1",
+                "up-votes": "2",
+                "down-votes": "1",
+                "features": []
+            },
+            {
+                "id": "4977869",
+                "date": "2017-08-25+12%3A27%3A31",
+                "summary": "%C5%9Awietny+telefon+jest+ultraszybki%2C+zoptymalizowany%2C+szkoda+tylko+%C5%BCe+nie+ma+baterii+wymienialnej",
+                "stars": "5",
+                "author": "Nit",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": [
+                    {
+                        "name": "szybki%2C+nie+grzeje+si%C4%99%2C+funkcjonalny%2C+nowoczesny",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "brak+mo%C5%BCliwo%C5%9Bci+wymiany+baterii",
+                        "advantage": 0
+                    }
+                ]
+            },
+            {
+                "id": "5144318",
+                "date": "2017-10-20+12%3A50%3A03",
+                "summary": "Jak+na+razie+ok.+zobaczymy+po+czasie.",
+                "stars": "4",
+                "author": "Pawe%C5%82+G.",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "1",
+                "features": []
+            },
+            {
+                "id": "6300721",
+                "date": "2017-12-06+15%3A03%3A22",
+                "summary": "Brak+mo%C5%BCliwo%C5%9Bci+wymiany+baterii",
+                "stars": "5",
+                "author": "Grzegorz",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": []
+            },
+            {
+                "id": "6346158",
+                "date": "2017-12-14+19%3A39%3A15",
+                "summary": "jestem+zadowolna.+aplikacje+super+dzialaja.+ladne+zdjecia+robi+i+filmy++tez.+duzy+ekran.+polecam",
+                "stars": "5",
+                "author": "betka",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": [
+                    {
+                        "name": "brak+wad",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "czas+pracy+na+baterii",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "funkcjonalno%C5%9B%C4%87",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "funkcjonalny",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "latwosc+obslugi",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nie+grzeje+si%C4%99",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nowoczesny",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nowy+design",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "szybki",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "wygl%C4%85d",
+                        "advantage": 1
+                    }
+                ]
+            },
+            {
+                "id": "6367121",
+                "date": "2017-12-19+17%3A00%3A13",
+                "summary": "Telefon+godny+polecenia",
+                "stars": "5",
+                "author": "Ania",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": [
+                    {
+                        "name": "czas+pracy+na+baterii",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "funkcjonalno%C5%9B%C4%87",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "latwosc+obslugi",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nie+grzeje+si%C4%99",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nowy+design",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "wygl%C4%85d",
+                        "advantage": 1
+                    }
+                ]
+            },
+            {
+                "id": "6246525",
+                "date": "2017-11-23+17%3A10%3A14",
+                "summary": "Fajny+telefonik",
+                "stars": "4%2C5",
+                "author": "Zla+m",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": []
+            },
+            {
+                "id": "4830108",
+                "date": "2017-07-07+17%3A38%3A11",
+                "summary": "Bardzo+dobry+telefon",
+                "stars": "4%2C5",
+                "author": "Czuowig",
+                "positive": "1",
+                "up-votes": "6",
+                "down-votes": "0",
+                "features": [
+                    {
+                        "name": "aparat%2C+wykonanie%2C+nowy+design%2C+czas+pracy+na+baterii",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "cena",
+                        "advantage": 0
+                    }
+                ]
+            },
+            {
+                "id": "6370665",
+                "date": "2017-12-20+12%3A39%3A57",
+                "summary": "bardzo+dobrze",
+                "stars": "5",
+                "author": "Aleksandr",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": []
+            },
+            {
+                "id": "6333375",
+                "date": "2017-12-13+03%3A41%3A23",
+                "summary": "dobry",
+                "stars": "5",
+                "author": "amadeusek333",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": []
+            },
+            {
+                "id": "5196009",
+                "date": "2017-11-07+12%3A01%3A52",
+                "summary": "OK",
+                "stars": "4%2C5",
+                "author": "mb",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": [
+                    {
+                        "name": "czas+pracy+na+baterii",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "funkcjonalno%C5%9B%C4%87",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "latwosc+obslugi",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nie+grzeje+si%C4%99",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "wygl%C4%85d",
+                        "advantage": 1
+                    }
+                ]
+            },
+            {
+                "id": "5198106",
+                "date": "2017-11-07+20%3A30%3A37",
+                "summary": "Bardzo+dobry%2C+estetyczny+i+funkcjonalny+telefon+w+przyst%C4%99pnej+cenie.+Gor%C4%85co+polecam%21",
+                "stars": "4%2C5",
+                "author": "F...i",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": [
+                    {
+                        "name": "czas+pracy+na+baterii",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "funkcjonalno%C5%9B%C4%87",
+                        "advantage": 1
+                    }
+                ]
+            },
+            {
+                "id": "4897556",
+                "date": "2017-07-29+17%3A19%3A42",
+                "summary": "Telefon+jest+idealnym+produktem+w+tej+cenie...",
+                "stars": "5",
+                "author": "JunJun",
+                "positive": "1",
+                "up-votes": "0",
+                "down-votes": "0",
+                "features": [
+                    {
+                        "name": "czas+pracy+na+baterii%2C+wygl%C4%85d%2C+nowy+design%2C+funkcjonalno%C5%9B%C4%87%2C+p%C5%82ynno%C5%9B%C4%87",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "brak+wad",
+                        "advantage": 0
+                    }
+                ]
+            },
+            {
+                "id": "4854720",
+                "date": "2017-07-16+13%3A03%3A20",
+                "summary": "%C5%9Awietny+produkt%21",
+                "stars": "5",
+                "author": "CeneoMaster",
+                "positive": "1",
+                "up-votes": "2",
+                "down-votes": "1",
+                "features": [
+                    {
+                        "name": "funkcjonalno%C5%9B%C4%87",
+                        "advantage": 1
+                    },
+                    {
+                        "name": "nowy+design",
+                        "advantage": 1
+                    }
+                ]
+            }
+        ]
+    }
+}

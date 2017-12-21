@@ -1,3 +1,25 @@
-<p>
-  datapresenter works!
-</p>
+
+<div>
+  <p>
+    <strong>Typ: </strong>{{etlData.data.type}}
+  </p>
+  <p>
+    <strong>Marka: </strong>{{etlData.data.brand}}
+  </p>
+  <p>
+    <strong>Model: </strong>{{etlData.data.model}}
+  </p>
+  <p>
+    <strong>Uwagi dodatkowe: </strong>{{etlData.data.remarks}}
+  </p>
+  <p>
+    <strong>Opinie: </strong>
+  </p>
+  <div class="card" *ngFor="let opinion of etlData.data.opinions">
+      <div class="card-body">
+        <h5 class="card-title">{{opinion.author}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{opinion.date}}</h6>
+        <p class="card-text">{{opinion.summary}}</p>
+      </div>
+    </div>
+</div>

@@ -14,6 +14,8 @@ import { EtlComponent } from './etl/etl.component';
 import { AppBootstrapModule } from './app-bootstrap.module';
 import { DatapresenterComponent } from './datapresenter/datapresenter.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { DatapresenterComponent } from './datapresenter/datapresenter.component'
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    AppBootstrapModule
+    AppBootstrapModule,
+    HttpClientModule
   ],
   providers: [EtlService],
   bootstrap: [AppComponent]
