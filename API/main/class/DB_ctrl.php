@@ -13,14 +13,14 @@ class DB_ctrl{
   }
 
   public function saveProductInfo($id,$type,$brand,$model){
-      $this->db->insertStatement($this->connection,"INSERT INTO products VALUES('$id','$type','$brand','$model')");
+      $this->db->insertStatement($this->connection,"INSERT INTO products VALUES('$id',".$this->connection->quote($type).",".$this->connection->quote($brand).",".$this->connection->quote($model).")");
   }
 
   public function saveRemarks($remarksArr,$prId){
       $remName;
       foreach($remarksArr as $remark) {
         $remName = $remark->getName();
-        $this->db->insertStatement($this->connection,"INSERT INTO remarks VALUES('null','$prId','$remName')");
+        $this->db->insertStatement($this->connection,"INSERT INTO remarks VALUES('null','$prId',".$this->connection->quote($remName).")");
       }
   }
 
@@ -39,7 +39,9 @@ class DB_ctrl{
         $opDownVotes = $opinion->getDownVotesCount();
         $opFeaturesArr = $opinion->getFeatures();
 
-        $this->db->insertStatement($this->connection,"INSERT INTO opinions VALUES('$opId','$prId','$opDate','$opSum','$opSarsCount','$opAuthor','$opIsPos','$opUpVotes','$opDownVotes')");
+        $stmnt = "INSERT INTO opinions VALUES('$opId','$prId','$opDate',".$this->connection->quote($opSum);
+        $stmnt = $stmnt.",'$opSarsCount',".$this->connection->quote($opAuthor).",'$opIsPos','$opUpVotes','$opDownVotes')";
+        $this->db->insertStatement($this->connection,$stmnt);
 
         $this -> saveFeatures($opFeaturesArr,$opId);
       }
@@ -53,7 +55,7 @@ class DB_ctrl{
       $feaIsAdv = $feature->getIsAdv();
       $feaSummary = $feature->getName();
 
-      $feaId = $this->db->insertStatement($this->connection,"INSERT INTO features VALUES('null','$feaSummary','$feaIsAdv')");
+      $feaId = $this->db->insertStatement($this->connection,"INSERT INTO features VALUES('null',".$this->connection->quote($feaSummary).",'$feaIsAdv')");
 
       $rel = $this->db->insertStatement($this->connection,"INSERT INTO opinions_features VALUES('$opId','$feaId')");
     }
