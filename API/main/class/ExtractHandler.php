@@ -12,6 +12,7 @@ class ExtractHandler{
       $ceneoDOM[] = $domDataLoader->loadData('https://www.ceneo.pl/'.$productId.'/opinie-'.$i);
     }
 
+
     return $ceneoDOM;
   }
 }

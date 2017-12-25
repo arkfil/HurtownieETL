@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 03 Gru 2017, 21:10
+-- Czas generowania: 12 Lis 2017, 18:11
 -- Wersja serwera: 10.1.26-MariaDB
 -- Wersja PHP: 7.1.8
 
@@ -73,8 +73,7 @@ CREATE TABLE `opinions_features` (
 CREATE TABLE `products` (
   `pr_id` int(11) NOT NULL,
   `pr_type` varchar(5000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `pr_brand` varchar(5000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `pr_model` varchar(5000) CHARACTER SET utf8 NOT NULL
+  `pr_brand` varchar(5000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -140,6 +139,11 @@ ALTER TABLE `features`
 --
 ALTER TABLE `opinions`
   MODIFY `op_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT dla tabeli `products`
+--
+ALTER TABLE `products`
+  MODIFY `pr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT dla tabeli `remarks`
 --

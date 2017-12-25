@@ -7,6 +7,14 @@ class Feature{
     $this->name = $pName;
     $this->isAdv = $pIsAdv;
   }
+
+  public static function compare($feaOne,$feaTwo){
+    if($feaOne->getName()!=$feaTwo->getName()) return false;
+    if($feaOne->getIsAdv()!=$feaTwo->getIsAdv()) return false;
+
+    return true;
+  }
+
   public function setIsAdv($pIsAdv){
     $this->isAdv = $pIsAdv;
   }
