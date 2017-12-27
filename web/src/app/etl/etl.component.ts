@@ -13,7 +13,7 @@ export class EtlComponent implements OnInit {
 
   constructor( private _etlService:EtlService ) { }
 
-  productId : string = "52408448";
+  productId : string = "52408449";
   public etlJson;
 
   ngOnInit() {

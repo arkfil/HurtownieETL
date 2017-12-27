@@ -1,4 +1,3 @@
-
 <div>
   <p>
     <strong>Typ: </strong>{{etlData.data.type}}
@@ -10,16 +9,28 @@
     <strong>Model: </strong>{{etlData.data.model}}
   </p>
   <p>
-    <strong>Uwagi dodatkowe: </strong>{{etlData.data.remarks}}
+    <strong>Uwagi dodatkowe: </strong>
   </p>
+  <ul>
+    <li *ngFor="let remark of etlData.data.remarks"> {{remark.name}} </li>
+  </ul>
+
   <p>
     <strong>Opinie: </strong>
   </p>
   <div class="card" *ngFor="let opinion of etlData.data.opinions">
-      <div class="card-body">
-        <h5 class="card-title">{{opinion.author}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{opinion.date}}</h6>
-        <p class="card-text">{{opinion.summary}}</p>
+    <div class="card-body">
+      <h5 class="card-title">{{opinion.author}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{opinion.date}}</h6>
+      <p class="card-text">{{opinion.summary}}</p>
+      <div class="row">
+        <div class="col-md-6" ng-show="0>1"> 
+          <h6 class="text-success">ZALETY</h6>
+        </div>
+        <div class="col-md-6" ng-if="opinion.features.length>0">
+          <h6 class="text-danger">WADY</h6>
+        </div>
       </div>
     </div>
+  </div>
 </div>
