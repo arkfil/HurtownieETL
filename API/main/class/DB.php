@@ -11,6 +11,7 @@ class DB{
     $this->userNname=$pUserNname;
     $this->password=$pPassword;
     $this->dbName = $pDbName;
+    ini_set('max_execution_time', 0);
   }
 
 
