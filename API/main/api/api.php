@@ -16,35 +16,28 @@ if($_GET['purpose']=='ETL'){
   if(!empty($_GET['id'])){
     $eh = new ExtractHandler;
     $data =  $eh->extractData($_GET['id']);
+
+    $dbCtrl = new DB_ctrl();
+    $cachedId = $dbCtrl->cacheProductHtml($data);
+    $dbCtrl->disconnect();
     echo '{
         "status":"ok",
         "object-type:":"rough-html",
+        "cached_rough_data_id":"'.$cachedId.'",
         "element_id":"'.$_GET['id'].'",
         "data":"'.urlencode($data[0]->saveHTML($data[0])).'"
       }';
   }
 }else if($_GET['purpose']=='T'){
-  // if($_SERVER["REQUEST_METHOD"]=="PUT"){
-  //   // parse_str(file_get_contents("php://input"),$post_vars);
-  //   $tHndl = new TransformHandler;
-  //   // echo json_decode(file_get_contents("php://input"),false)->data;
-  //   $rawCode = json_decode(file_get_contents("php://input"),false)->data;
-  //   $domDataLoader = new DomDataLoader();
-  //
-  //
-  //   $prId = json_decode(file_get_contents("php://input"),false)->element_id;
-  //   echo "{".
-  //     '"status":"ok",'.
-  //     '"element_id":"'.$prId.'",'.
-  //     '"object-type":"product",'.
-  //     '"data":'.$tHndl->transformData($domDataLoader.load($rawCode),$prId).'}';
-  // }else{
-  //   return 'error';
-  // }
-  // //TO DO
-  if(!empty($_GET['id'])){
-    $eh = new ExtractHandler;
-    $data =  $eh->extractData($_GET['id']);
+
+    if(!empty($_GET['id']) && !empty($_GET['data'])){
+    // $eh = new ExtractHandler;
+    // $data =  $eh->extractData($_GET['id']);
+
+    $dbCtrl = new DB_ctrl();
+    $data = $dbCtrl->retriveCachedRawData($_GET['data']);
+    $dbCtrl->disconnect();
+
     $tr = new TransformHandler;
     $productObj = $tr->transformData($data,$_GET['id']);
 
@@ -58,8 +51,36 @@ if($_GET['purpose']=='ETL'){
 }else if($_GET['purpose']=='L'){
   if($_SERVER["REQUEST_METHOD"]=="PUT"){
 
-    $rawCode = json_decode(file_get_contents("php://input"),false)->data;
+    $prJSON = json_decode(file_get_contents("php://input"),false)->data;
     $prId = json_decode(file_get_contents("php://input"),false)->element_id;
+
+    $productObj = new Product($prId,$prJSON->type,$prJSON->brand,$prJSON->model,array(),array());
+
+    $opObjArr = array();
+
+    $opJsonArr = $prJSON->opinions;
+    for($k=0;$k<sizeof($opJsonArr);++$k){
+      $feaObjArr = array();
+      $feaJsonArr = ($prJSON->opinions)[$k]->features;
+      for($l=0;$l<sizeof($feaJsonArr);++$l){
+        $feaObjArr[] = new Feature($feaJsonArr[$l]->name,$feaJsonArr[$l]->advantage);
+      }
+      $opObjArr[] = new Opinion($opJsonArr[$k]->id,$opJsonArr[$k]->date,$opJsonArr[$k]->summary,$opJsonArr[$k]->stars,$opJsonArr[$k]->author,
+                      $opJsonArr[$k]->positive,$opJsonArr[$k]->{'up-votes'},$opJsonArr[$k]->{'down-votes'},$feaObjArr);
+      // $pId, $pDate, $pSummary, $pStars, $pAuthor, $pIsPositive, $pUpVotesCount, $pDownVotesCount, $pFeatures
+    }
+    $productObj->setOpinions($opObjArr);
+
+    $remJsonArr = $prJSON->remarks;
+    $remObjArr = array();
+    for($k=0;$k<sizeof($remJsonArr);++$k){
+      $remObjArr[] = new Remark($remJsonArr[$k]->name);
+    }
+
+    $productObj->setRemarks($remObjArr);
+
+    $ld = new LoadHandler;
+    $ld->loadData($productObj);
 
     echo "{".
       '"status":"ok",'.

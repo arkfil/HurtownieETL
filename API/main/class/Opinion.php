@@ -28,6 +28,30 @@ class Opinion
     $this->features = $pFeatures;
   }
 
+  public static function compare($opOne,$opTwo){
+    // print_r($opOne->getFeatures());
+    // echo "|";
+    // print_r($opTwo->getFeatures());
+    // echo "|";
+
+    if(sizeof($opOne->getFeatures())!=sizeof($opTwo->getFeatures())) return false;
+
+    for($z=0;$z<sizeof($opOne->getFeatures());++$z){
+      if(!Feature::compare(($opOne->getFeatures())[$z],($opTwo->getFeatures())[$z])) return false;
+    }
+
+    if($opOne->getId()!=$opTwo->getId()) return false;
+    if($opOne->getDate()!=$opTwo->getDate()) return false;
+    if($opOne->getSummary()!=$opTwo->getSummary()) return false;
+    if($opOne->getStars()!=$opTwo->getStars()) return false;
+    if($opOne->getAuthor()!=$opTwo->getAuthor()) return false;
+    if($opOne->getIsPositive()!=$opTwo->getIsPositive()) return false;
+    if($opOne->getUpVotesCount()!=$opTwo->getUpVotesCount()) return false;
+    if($opOne->getDownVotesCount()!=$opTwo->getDownVotesCount()) return false;
+
+    return true;
+  }
+
   public function setId($pId){                          $this->id = $pId; }
   // public function setParentOpinion($pParentOpinion){    $this->parentOpinion = $pParentOpinion;  }
   public function setDate($pDate){                      $this->date = $pDate;  }

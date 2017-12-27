@@ -33,6 +33,28 @@ class Product{
     $this->opinions = $pOpinions;
   }
 
+  public static function compare($prOne,$prTwo){
+    if(strlen($prOne) != strlen($prTwo)) return false;
+
+    $prTwoOpinions = $prTwo->getOpinions();
+    $prOneOpinions = $prOne->getOpinions();
+
+    if(sizeof($prOne->getOpinions()) != sizeof($prTwo->getOpinions())) return false;
+
+    for($i=0;$i<sizeof($prOneOpinions);++$i){
+      $prOneOpId = $prOneOpinions[$i] -> getId();
+      $j = 0;
+      while($prOneOpId != $prTwoOpinions[$j] -> getId()){
+        $j+=1;
+      }
+      if(!Opinion::compare($prOneOpinions[$i],$prTwoOpinions[$j])) return false;
+    }
+
+    if(sizeof($prOne->getRemarks()) != sizeof($prTwo->getRemarks())) return false;
+
+
+    return true;
+  }
 
   public function __toString()
   {

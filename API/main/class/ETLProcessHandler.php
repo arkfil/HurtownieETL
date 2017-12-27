@@ -10,11 +10,10 @@ class ETLProcessHandler{
 
     $data = $ex->extractData($productId);
     $productObj = $tr->transformData($data,$productId);
-    $ld->loadData($productObj);
+    $productObj = $ld->loadData($productObj);
 
 
     return $productObj;
-
 
   }
 
