@@ -87,20 +87,33 @@ class Opinion
            '"positive":"'.$this->isPositive.'",'.
            '"up-votes":"'.$this->upVotesCount.'",'.
            '"down-votes":"'.$this->downVotesCount.'",'.
-           '"features":[';
+           '"advantages": [ ';
 
      if(is_array($this->features)){
        $numberOfFeatures = sizeof($this->features);
-       $numberOfFeatures-=1;
-       for($f=0;$f<=$numberOfFeatures;++$f){
-         if($f!=$numberOfFeatures)
-            $opStr = $opStr.$this->features[$f].',';
-          else
-            $opStr = $opStr.$this->features[$f];
+       for($f=0;$f<$numberOfFeatures;++$f){
+         if($this->features[$f]->getIsAdv()==1)
+              $opStr = $opStr.$this->features[$f].',';
        }
+       $opStr = substr($opStr,0,(strlen($opStr)-1));
      }
 
+     $opStr = $opStr."],";
+
+     $opStr = $opStr.'"disadvantages":[ ';
+
+        if(is_array($this->features)){
+          $numberOfFeatures = sizeof($this->features);
+          for($g=0;$g<$numberOfFeatures;++$g){
+           if($this->features[$g]->getIsAdv()==0)
+                $opStr = $opStr.$this->features[$g].',';
+          }
+          $opStr = substr($opStr,0,(strlen($opStr)-1));
+        }
+
+
      $opStr = $opStr."]}";
+
      return $opStr;
   }
 
