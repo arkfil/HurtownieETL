@@ -12,7 +12,6 @@ export class DatapresenterComponent implements OnInit {
   etlData: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private _etl: EtlService) {
-    this.route.params.subscribe(res => console.log(res.id));
    }
 
   ngOnInit() {

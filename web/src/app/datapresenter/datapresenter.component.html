@@ -20,15 +20,33 @@
   </p>
   <div class="card" *ngFor="let opinion of etlData.data.opinions">
     <div class="card-body">
+      <p class="float-sm-right">
+        <span class="glyphicon glyphicon-thumbs-up"></span> {{ opinion.upvotes }}
+        <span class="glyphicon glyphicon-thumbs-down"></span> {{ opinion.downvotes }}
+      </p>
+      <p class="card-subtitle mb-3 text-muted">{{opinion.date}}</p>
       <h5 class="card-title">{{opinion.author}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{opinion.date}}</h6>
+      <p class="card-subtitle font-weight-bold mb-2 text-success" *ngIf="opinion.positive == 1">POLECAM
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="text-dark font-weight-normal">{{opinion.stars}}/5</span>
+      </p>
+      <p class="card-subtitle font-weight-bold mb-2 text-danger" *ngIf="opinion.positive == 0">NIE POLECAM
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="text-dark font-weight-normal">{{opinion.stars}}/5</span>
+      </p>
       <p class="card-text">{{opinion.summary}}</p>
       <div class="row">
-        <div class="col-md-6" ng-show="0>1"> 
+        <div class="col-md-6" *ngIf="opinion.advantages.length > 0">
           <h6 class="text-success">ZALETY</h6>
+          <ul>
+            <li *ngFor="let advantage of opinion.advantages">{{advantage}}</li>
+          </ul>
         </div>
-        <div class="col-md-6" ng-if="opinion.features.length>0">
+        <div class="col-md-6" *ngIf="opinion.disadvantages.length > 0">
           <h6 class="text-danger">WADY</h6>
+          <ul>
+            <li *ngFor="let disadvantage of opinion.disadvantages">{{disadvantage}}</li>
+          </ul>
         </div>
       </div>
     </div>
