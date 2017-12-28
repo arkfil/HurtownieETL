@@ -23,7 +23,7 @@ class Feature{
   }
 
   public function getIsAdv(){
-    return $this->isAdv;
+    return trim($this->isAdv);
   }
   public function getName(){
       return $this->name;
@@ -31,7 +31,7 @@ class Feature{
 
 
 public function __toString(){
-  return '{"name":"'.$this->name.'","advantage":'.$this->isAdv.'}';
+  return '"'.$this->name.'"';
 }
 
 }

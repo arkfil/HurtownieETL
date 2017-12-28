@@ -22,10 +22,10 @@ if($_GET['purpose']=='ETL'){
     $dbCtrl->disconnect();
     echo '{
         "status":"ok",
-        "object-type:":"rough-html",
+        "object-type":"information",
         "cached_rough_data_id":"'.$cachedId.'",
         "element_id":"'.$_GET['id'].'",
-        "data":"'.urlencode($data[0]->saveHTML($data[0])).'"
+        "data":{"status":"ok","description":"Process ended successfully"}
       }';
   }
 }else if($_GET['purpose']=='T'){
@@ -61,10 +61,15 @@ if($_GET['purpose']=='ETL'){
     $opJsonArr = $prJSON->opinions;
     for($k=0;$k<sizeof($opJsonArr);++$k){
       $feaObjArr = array();
-      $feaJsonArr = ($prJSON->opinions)[$k]->features;
+      $feaJsonArr = ($prJSON->opinions)[$k]->advantages;
       for($l=0;$l<sizeof($feaJsonArr);++$l){
-        $feaObjArr[] = new Feature($feaJsonArr[$l]->name,$feaJsonArr[$l]->advantage);
+        $feaObjArr[] = new Feature($feaJsonArr[$l],1);
       }
+      $feaJsonArr = ($prJSON->opinions)[$k]->disadvantages;
+      for($l=0;$l<sizeof($feaJsonArr);++$l){
+        $feaObjArr[] = new Feature($feaJsonArr[$l],0);
+      }
+
       $opObjArr[] = new Opinion($opJsonArr[$k]->id,$opJsonArr[$k]->date,$opJsonArr[$k]->summary,$opJsonArr[$k]->stars,$opJsonArr[$k]->author,
                       $opJsonArr[$k]->positive,$opJsonArr[$k]->{'up-votes'},$opJsonArr[$k]->{'down-votes'},$feaObjArr);
       // $pId, $pDate, $pSummary, $pStars, $pAuthor, $pIsPositive, $pUpVotesCount, $pDownVotesCount, $pFeatures
@@ -81,12 +86,16 @@ if($_GET['purpose']=='ETL'){
 
     $ld = new LoadHandler;
     $ld->loadData($productObj);
-
     echo "{".
       '"status":"ok",'.
       '"element_id":"'.$prId.'",'.
-      '"object-type":"information",'.
-      '"data":{"status":"ok","description":"Process ended successfully"}}';
+      '"object-type":"product",'.
+      '"data":'.$productObj.'}';
+    // echo "{".
+    //   '"status":"ok",'.
+    //   '"element_id":"'.$prId.'",'.
+    //   '"object-type":"information",'.
+    //   '"data":{"status":"ok","description":"Process ended successfully"}}';
   }else{
     return 'error';
   }
