@@ -1,0 +1,54 @@
+<div>
+  <p>
+    <strong>Typ: </strong>{{etlData.data.type}}
+  </p>
+  <p>
+    <strong>Marka: </strong>{{etlData.data.brand}}
+  </p>
+  <p>
+    <strong>Model: </strong>{{etlData.data.model}}
+  </p>
+  <p>
+    <strong>Uwagi dodatkowe: </strong>
+  </p>
+  <ul>
+    <li *ngFor="let remark of etlData.data.remarks"> {{remark.name}} </li>
+  </ul>
+
+  <p>
+    <strong>Opinie: </strong>
+  </p>
+  <div class="card" *ngFor="let opinion of etlData.data.opinions">
+    <div class="card-body">
+      <p class="float-sm-right">
+        <span class="text-success"><i class="fa fa-thumbs-up"></i> {{ opinion.upvotes }}</span>
+        <span class="text-danger"><i class="fa fa-thumbs-down"></i> {{ opinion.downvotes }}</span>
+      </p>
+      <p class="card-subtitle mb-3 text-muted">{{opinion.date}}</p>
+      <h5 class="card-title">{{opinion.author}}</h5>
+      <p class="card-subtitle font-weight-bold mb-2 text-success" *ngIf="opinion.positive == 1">POLECAM
+        <i class="fa fa-star"></i>
+        <span class="text-dark font-weight-normal">{{opinion.stars}}/5</span>
+      </p>
+      <p class="card-subtitle font-weight-bold mb-2 text-danger" *ngIf="opinion.positive == 0">NIE POLECAM
+        <i class="fa fa-star"></i>
+        <span class="text-dark font-weight-normal">{{opinion.stars}}/5</span>
+      </p>
+      <p class="card-text">{{opinion.summary}}</p>
+      <div class="row">
+        <div class="col-md-6" *ngIf="opinion.advantages.length > 0">
+          <h6 class="text-success">ZALETY</h6>
+          <ul>
+            <li *ngFor="let advantage of opinion.advantages">{{advantage}}</li>
+          </ul>
+        </div>
+        <div class="col-md-6" *ngIf="opinion.disadvantages.length > 0">
+          <h6 class="text-danger">WADY</h6>
+          <ul>
+            <li *ngFor="let disadvantage of opinion.disadvantages">{{disadvantage}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
