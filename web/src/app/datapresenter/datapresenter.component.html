@@ -21,17 +21,17 @@
   <div class="card" *ngFor="let opinion of etlData.data.opinions">
     <div class="card-body">
       <p class="float-sm-right">
-        <span class="glyphicon glyphicon-thumbs-up"></span> {{ opinion.upvotes }}
-        <span class="glyphicon glyphicon-thumbs-down"></span> {{ opinion.downvotes }}
+        <span class="text-success"><i class="fa fa-thumbs-up"></i> {{ opinion.upvotes }}</span>
+        <span class="text-danger"><i class="fa fa-thumbs-down"></i> {{ opinion.downvotes }}</span>
       </p>
       <p class="card-subtitle mb-3 text-muted">{{opinion.date}}</p>
       <h5 class="card-title">{{opinion.author}}</h5>
       <p class="card-subtitle font-weight-bold mb-2 text-success" *ngIf="opinion.positive == 1">POLECAM
-        <span class="glyphicon glyphicon-star"></span>
+        <i class="fa fa-star"></i>
         <span class="text-dark font-weight-normal">{{opinion.stars}}/5</span>
       </p>
       <p class="card-subtitle font-weight-bold mb-2 text-danger" *ngIf="opinion.positive == 0">NIE POLECAM
-        <span class="glyphicon glyphicon-star"></span>
+        <i class="fa fa-star"></i>
         <span class="text-dark font-weight-normal">{{opinion.stars}}/5</span>
       </p>
       <p class="card-text">{{opinion.summary}}</p>
