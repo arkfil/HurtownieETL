@@ -85,8 +85,8 @@ class Opinion
            '"stars":"'.$this->stars.'",'.
            '"author":"'.$this->author.'",'.
            '"positive":"'.$this->isPositive.'",'.
-           '"upvotes":"'.$this->upVotesCount.'",'.
-           '"downvotes":"'.$this->downVotesCount.'",'.
+           '"up_votes":"'.$this->upVotesCount.'",'.
+           '"down_votes":"'.$this->downVotesCount.'",'.
            '"advantages": [ ';
 
      if(is_array($this->features)){

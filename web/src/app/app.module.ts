@@ -10,12 +10,13 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { EtlComponent } from './etl/etl.component';
-
-import { AppBootstrapModule } from './app-bootstrap.module';
+import { EtlButtonComponent } from './etl/etl-button/etl-button.component';
 import { DatapresenterComponent } from './datapresenter/datapresenter.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { AppBootstrapModule } from './app-bootstrap.module';
 
+import { HttpClientModule } from '@angular/common/http';
+import './models'
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     AboutComponent,
     EtlComponent,
-    DatapresenterComponent
+    DatapresenterComponent,
+    EtlButtonComponent
   ],
   imports: [
     BrowserModule,

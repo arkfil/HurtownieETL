@@ -7,8 +7,8 @@ if($_GET['purpose']=='ETL'){
     echo "{".
       '"status":"ok",'.
       '"element_id":"'.$_GET['id'].'",'.
-      '"object-type":"product",'.
-      '"data":'.$productObj.'}';
+      '"object_type":"product",'.
+      '"product_data":'.$productObj.'}';
   }else{
     echo 'error';
   }
@@ -22,10 +22,10 @@ if($_GET['purpose']=='ETL'){
     $dbCtrl->disconnect();
     echo '{
         "status":"ok",
-        "object-type":"information",
+        "object_type":"information",
         "cached_rough_data_id":"'.$cachedId.'",
         "element_id":"'.$_GET['id'].'",
-        "data":{"status":"ok","description":"Process ended successfully"}
+        "product_data":{"status":"ok","description":"Process ended successfully"}
       }';
   }
 }else if($_GET['purpose']=='T'){
@@ -45,7 +45,7 @@ if($_GET['purpose']=='ETL'){
       '"status":"ok",'.
       '"element_id":"'.$_GET['id'].'",'.
       '"object-type":"product",'.
-      '"data":'.$productObj.'}';
+      '"product_data":'.$productObj.'}';
   }
 
 }else if($_GET['purpose']=='L'){
@@ -71,7 +71,7 @@ if($_GET['purpose']=='ETL'){
       }
 
       $opObjArr[] = new Opinion($opJsonArr[$k]->id,$opJsonArr[$k]->date,$opJsonArr[$k]->summary,$opJsonArr[$k]->stars,$opJsonArr[$k]->author,
-                      $opJsonArr[$k]->positive,$opJsonArr[$k]->{'up-votes'},$opJsonArr[$k]->{'down-votes'},$feaObjArr);
+                      $opJsonArr[$k]->positive,$opJsonArr[$k]->{'up_votes'},$opJsonArr[$k]->{'down_votes'},$feaObjArr);
       // $pId, $pDate, $pSummary, $pStars, $pAuthor, $pIsPositive, $pUpVotesCount, $pDownVotesCount, $pFeatures
     }
     $productObj->setOpinions($opObjArr);
@@ -89,8 +89,8 @@ if($_GET['purpose']=='ETL'){
     echo "{".
       '"status":"ok",'.
       '"element_id":"'.$prId.'",'.
-      '"object-type":"product",'.
-      '"data":'.$productObj.'}';
+      '"object_type":"product",'.
+      '"product_data":'.$productObj.'}';
     // echo "{".
     //   '"status":"ok",'.
     //   '"element_id":"'.$prId.'",'.
@@ -100,7 +100,7 @@ if($_GET['purpose']=='ETL'){
     return 'error';
   }
 }else{
-  echo '{"status":"error","object-type":"error-details","data":{"error-code":1,"description":"Something is wrong with url address"}}';
+  echo '{"status":"error","object_type":"error_details","data":{"error_code":1,"description":"Something is wrong with url address"}}';
 }
 
 

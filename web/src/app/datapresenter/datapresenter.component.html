@@ -1,28 +1,28 @@
 <div>
   <p>
-    <strong>Typ: </strong>{{etlData.data.type}}
+    <strong>Typ: </strong>{{etlData.product_data.type}}
   </p>
   <p>
-    <strong>Marka: </strong>{{etlData.data.brand}}
+    <strong>Marka: </strong>{{etlData.product_data.brand}}
   </p>
   <p>
-    <strong>Model: </strong>{{etlData.data.model}}
+    <strong>Model: </strong>{{etlData.product_data.model}}
   </p>
   <p>
     <strong>Uwagi dodatkowe: </strong>
   </p>
   <ul>
-    <li *ngFor="let remark of etlData.data.remarks"> {{remark.name}} </li>
+    <li *ngFor="let remark of etlData.product_data.remarks"> {{remark}} </li>
   </ul>
 
   <p>
     <strong>Opinie: </strong>
   </p>
-  <div class="card" *ngFor="let opinion of etlData.data.opinions">
+  <div class="card mb-2" *ngFor="let opinion of etlData.product_data.opinions">
     <div class="card-body">
       <p class="float-sm-right">
-        <span class="text-success"><i class="fa fa-thumbs-up"></i> {{ opinion.upvotes }}</span>
-        <span class="text-danger"><i class="fa fa-thumbs-down"></i> {{ opinion.downvotes }}</span>
+        <span class="text-success"><i class="fa fa-thumbs-up"></i> {{ opinion.up_votes }}</span>
+        <span class="text-danger"><i class="fa fa-thumbs-down"></i> {{ opinion.down_votes }}</span>
       </p>
       <p class="card-subtitle mb-3 text-muted">{{opinion.date}}</p>
       <h5 class="card-title">{{opinion.author}}</h5>

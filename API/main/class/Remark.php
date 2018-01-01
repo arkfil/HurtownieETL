@@ -13,11 +13,7 @@ class Remark{
 
 
   public function __toString(){
-    $remStr = '{'.
-           '"name":"'.$this->name.'"'.
-           '}';
-
-     return $remStr;
+    return '"'.$this->name.'"';
   }
 
 
