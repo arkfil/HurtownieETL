@@ -43,7 +43,7 @@ class CeneoHtmlParser{
     $longNameElements = self::getElementsByClass($contentNode, 'h1', 'long-name');
     $prName = $longNameElements[0]->nodeValue;
 
-    return urlencode(trim($prName));
+    return rawurlencode(trim($prName));
   }
   //
   // retriveRemarksList($ceneoDom){
@@ -52,7 +52,7 @@ class CeneoHtmlParser{
 
   public function retriveProductBrand($ceneoDom){
     $prBrand = self::getElementAtributeValueByAnotherAtribute($ceneoDom, 'meta', 'content', 'property', 'og:brand');
-    return urlencode(trim($prBrand));
+    return rawurlencode(trim($prBrand));
   }
 
   public function retriveProductType($ceneoDom){
@@ -61,7 +61,7 @@ class CeneoHtmlParser{
     $index = sizeof($productInfoArr);
     $productCategory = $productInfoArr[$index-1]->nodeValue;
 
-    return urlencode(trim($productCategory));
+    return rawurlencode(trim($productCategory));
   }
 
   public function retriveProductTypeAlternative($ceneoDom){
@@ -75,8 +75,8 @@ class CeneoHtmlParser{
     $productModelElement = self::getElementsByClass($productInfoArr[0], 'strong', 'js_searchInGoogleTooltip')[0];
     $prModel = $productModelElement->nodeValue;
 
-    // return urlencode(trim($this->cutOutRemarks($prModel)));
-    return urlencode(trim($prModel));
+    // return rawurlencode(trim($this->cutOutRemarks($prModel)));
+    return rawurlencode(trim($prModel));
   }
 
   public function getRemarks($ceneoDom){
@@ -102,14 +102,14 @@ class CeneoHtmlParser{
     $opinionsListElements = self::getElementsByClass($opinionsList, 'li', 'review-box');
 
     for($j = 0;$j<sizeof($opinionsListElements);++$j){
-      $opId = urlencode(trim(   $this -> retriveOpinionId($opinionsListElements[$j])));
-      $date = urlencode(trim(   $this -> retriveOpinionDate($opinionsListElements[$j])));
-      $summary = urlencode(trim(    $this -> retriveOpinionSummary($opinionsListElements[$j])));
-      $stars = urlencode(trim(    $this -> retriveOpinionStars($opinionsListElements[$j])));
-      $author = urlencode(trim(   $this -> retriveOpinionAuthor($opinionsListElements[$j])));
-      $isPositive = urlencode(trim(   $this -> retriveOpinionTypeOfEfect($opinionsListElements[$j])));
-      $upVotesCount = urlencode(trim(   $this -> retriveOpinionUpVotesCount($opinionsListElements[$j])));
-      $downVotesCount = urlencode(trim(   $this -> retriveOpinionDownVotesCount($opinionsListElements[$j])));
+      $opId = rawurlencode(trim(   $this -> retriveOpinionId($opinionsListElements[$j])));
+      $date = rawurlencode(trim(   $this -> retriveOpinionDate($opinionsListElements[$j])));
+      $summary = rawurlencode(trim(    $this -> retriveOpinionSummary($opinionsListElements[$j])));
+      $stars = rawurlencode(trim(    $this -> retriveOpinionStars($opinionsListElements[$j])));
+      $author = rawurlencode(trim(   $this -> retriveOpinionAuthor($opinionsListElements[$j])));
+      $isPositive = rawurlencode(trim(   $this -> retriveOpinionTypeOfEfect($opinionsListElements[$j])));
+      $upVotesCount = rawurlencode(trim(   $this -> retriveOpinionUpVotesCount($opinionsListElements[$j])));
+      $downVotesCount = rawurlencode(trim(   $this -> retriveOpinionDownVotesCount($opinionsListElements[$j])));
       $features = $this -> retriveOpinionFeatures($opinionsListElements[$j]);
 
 
@@ -150,14 +150,14 @@ class CeneoHtmlParser{
     $prosElementsArr = $listEl -> getElementsByTagName('li');
 
     foreach($prosElementsArr as $pro) {
-      $featuresArr[] = new Feature( urlencode(trim( $pro->nodeValue)) ,1);
+      $featuresArr[] = new Feature( rawurlencode(trim( $pro->nodeValue)) ,1);
     }
 
     $listEl = self::getElementsByClass($singleOpinion, "div", "cons-cell")[0];
     $consElementsArr = $listEl -> getElementsByTagName('li');
 
     foreach($consElementsArr as $con) {
-      $featuresArr[] = new Feature(  urlencode(trim( $con->nodeValue)) ,0);
+      $featuresArr[] = new Feature(  rawurlencode(trim( $con->nodeValue)) ,0);
     }
 
     return $featuresArr;
@@ -178,20 +178,20 @@ class CeneoHtmlParser{
       // $remarksPaternArr
       foreach(self::$remarksPaternArr as $pattern) {
         if(strpos($stringTitle, $pattern)!==false)
-          $remarksArr[] = new Remark( urlencode(trim($pattern)));
+          $remarksArr[] = new Remark( rawurlencode(trim($pattern)));
       }
 
       if (preg_match(
       '/[0-9]{0,}[.,]{0,1}[0-9]+((GB)|(gb)|(Gb)|(MB)|(Mb)|(mb)|(KB)|(Kb)|(kb)|(TB)(Tb)|(tb)|(mhz)|(Mhz)|(MHZ)|(mpx)|(Mpx)|(MPX)|(Mah)|(mah)|(MAH)|(wh)|(Wh)|(WH)|(cali)|(Cali)|(cale)|(Cale)|(cala)|(Cala)|(")){1}/',
       $stringTitle,$matches)) {
         if(trim($matches[0])!='()' || strlen(trim($matches[0]))>0)
-          $remarksArr[] = new Remark( urlencode(trim($matches[0])));
+          $remarksArr[] = new Remark( rawurlencode(trim($matches[0])));
       }
       if (preg_match(
       '/[0-9]{0,}[.,]{0,1}[0-9]+\s{1}((GB)|(gb)|(Gb)|(MB)|(Mb)|(mb)|(KB)|(Kb)|(kb)|(TB)(Tb)|(tb)|(mhz)|(Mhz)|(MHZ)|(mpx)|(Mpx)|(MPX)|(Mah)|(mah)|(MAH)|(wh)|(Wh)|(WH)|(cali)|(Cali)|(cale)|(Cale)|(cala)|(Cala)|(")){1}/',
       $stringTitle,$matches)) {
         if(trim($matches[0])!='()' || strlen(trim($matches[0]))>0)
-          $remarksArr[] = new Remark( urlencode(trim($matches[0])));
+          $remarksArr[] = new Remark( rawurlencode(trim($matches[0])));
       }
 
 

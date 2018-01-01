@@ -38,7 +38,7 @@ class DB_ctrl{
 
       $feaObjArr = $this -> getFeaturesArray($currOpID,$prLp);
 
-      $opObjArr[] = new Opinion($currOpID, urlencode($currOp["op_date"]), $currOp["op_summary"], $currOp["op_stars"], $currOp["op_author"],
+      $opObjArr[] = new Opinion($currOpID, rawurlencode($currOp["op_date"]), $currOp["op_summary"], $currOp["op_stars"], $currOp["op_author"],
                               $currOp["op_is_positive"], $currOp["op_up_votes_count"], $currOp["op_down_votes_count"], $feaObjArr);
     }
 
