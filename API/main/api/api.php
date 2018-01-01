@@ -51,7 +51,7 @@ if($_GET['purpose']=='ETL'){
 }else if($_GET['purpose']=='L'){
   if($_SERVER["REQUEST_METHOD"]=="PUT"){
 
-    $prJSON = json_decode(file_get_contents("php://input"),false)->data;
+    $prJSON = json_decode(file_get_contents("php://input"),false)->product_data;
     $prId = json_decode(file_get_contents("php://input"),false)->element_id;
 
     $productObj = new Product($prId,$prJSON->type,$prJSON->brand,$prJSON->model,array(),array());
@@ -79,7 +79,7 @@ if($_GET['purpose']=='ETL'){
     $remJsonArr = $prJSON->remarks;
     $remObjArr = array();
     for($k=0;$k<sizeof($remJsonArr);++$k){
-      $remObjArr[] = new Remark($remJsonArr[$k]->name);
+      $remObjArr[] = new Remark($remJsonArr[$k]);
     }
 
     $productObj->setRemarks($remObjArr);

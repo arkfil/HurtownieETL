@@ -16,10 +16,11 @@ import { Observable } from 'rxjs/Observable';
 export class EtlComponent implements OnInit {
 
   constructor(private _etlService: EtlService) { }
-
+  public showData: boolean = false;
+  
   private productId: string = '52408448';
   private etlData: etlData;
-  private showData: boolean = false;
+  
 
   private eFlowControl: flowControl;
   private tFlowControl: flowControl;

@@ -1,14 +1,13 @@
 <div class="row">
   <div class="col-md-4"></div>
   <div class="col-md-4">
-    <div *ngIf='!(etlData && showData)'>
-      <form>
+    <div *ngIf="!showData">
         <div class="form-group">
           <label for="productIdInput">Wpisz kod produktu:</label>
           <input type="text" class="form-control" name="procuctId" placeholder="Kod produktu..." [(ngModel)]="productId">
         </div>
 
-        <div class="btn-toolbar mb-1" role="toolbar"><div class="btn-toolbar mb-1" role="toolbar"></div>
+        <div class="btn-toolbar mb-1" role="toolbar">
           <etl-button [buttonFlowControl]="eFlowControl"></etl-button>
           <etl-button [buttonFlowControl]="tFlowControl"></etl-button>
           <etl-button [buttonFlowControl]="lFlowControl"></etl-button>
@@ -17,15 +16,14 @@
         <div class="btn-toolbar mb-1" role="toolbar">
           <etl-button [buttonFlowControl]="etlFlowControl"></etl-button>
         </div>
+    </div>
+    
+    <div *ngIf="showData" class="btn-toolbar mb-1" role="toolbar">
+      <button type="button" class="btn btn-warning col-sm-offset" (click)="reset()">Powrót</button>
+    </div>
 
-      </form>
-    </div>
-    <div *ngIf='(etlData && showData)'>
-        <div class="btn-toolbar mb-1" role="toolbar">
-            <button type="button" class="btn btn-warning col-sm-offset" (click)="reset()">Powrót</button>
-        </div>
-    </div>
+
   </div>
   <div class="col-md-4"></div>
 </div>
-<app-datapresenter *ngIf='etlData && showData'></app-datapresenter>
+<app-datapresenter *ngIf="showData"></app-datapresenter>
