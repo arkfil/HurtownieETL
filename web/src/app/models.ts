@@ -1,3 +1,5 @@
+import { forEach } from "@angular/router/src/utils/collection";
+
 export class eData {
     status?: string;
     object_type?: string;
@@ -31,7 +33,7 @@ export class opinion {
     public author: string;
     public date: DateTimeFormat;
     public summary: string;
-
+    
     public up_votes: number;
     public down_votes: number;
     public positive: number;
@@ -39,7 +41,6 @@ export class opinion {
     public advantages: Array<string>;
     public disadvantages: Array<string>;
 }
-
 export class etlError{
     public status: string;
     public object_type: string;

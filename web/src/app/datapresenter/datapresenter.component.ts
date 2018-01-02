@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
-import {EtlService} from '../etl.service';
+import { EtlService } from '../etl.service';
+import { etlData } from '../models';
 
 @Component({
   selector: 'app-datapresenter',
@@ -9,16 +8,17 @@ import {EtlService} from '../etl.service';
   styleUrls: ['./datapresenter.component.css']
 })
 export class DatapresenterComponent implements OnInit {
-  etlData: any;
+  
+  etlData: etlData;
 
-  constructor(private route: ActivatedRoute, private router: Router, private _etl: EtlService) {
+  constructor(private _etl: EtlService) {
    }
 
   ngOnInit() {
     this._etl.etlData.subscribe(res => this.etlData = res);
   }
-sendMeHome(){
-  this.router.navigate([''])
-  }
 
+  public decode(text : string) : string {
+    return decodeURIComponent(text);
+  }
 }

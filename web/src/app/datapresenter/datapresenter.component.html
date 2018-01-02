@@ -1,18 +1,18 @@
 <div>
   <p>
-    <strong>Typ: </strong>{{etlData.product_data.type}}
+    <strong>Typ: </strong>{{ decode(etlData.product_data.type) }}
   </p>
   <p>
-    <strong>Marka: </strong>{{etlData.product_data.brand}}
+    <strong>Marka: </strong>{{ decode(etlData.product_data.brand) }}
   </p>
   <p>
-    <strong>Model: </strong>{{etlData.product_data.model}}
+    <strong>Model: </strong>{{ decode(etlData.product_data.model) }}
   </p>
   <p>
     <strong>Uwagi dodatkowe: </strong>
   </p>
   <ul>
-    <li *ngFor="let remark of etlData.product_data.remarks"> {{remark}} </li>
+    <li *ngFor="let remark of etlData.product_data.remarks"> {{ decode(remark) }} </li>
   </ul>
 
   <p>
@@ -24,28 +24,28 @@
         <span class="text-success"><i class="fa fa-thumbs-up"></i> {{ opinion.up_votes }}</span>
         <span class="text-danger"><i class="fa fa-thumbs-down"></i> {{ opinion.down_votes }}</span>
       </p>
-      <p class="card-subtitle mb-3 text-muted">{{opinion.date}}</p>
-      <h5 class="card-title">{{opinion.author}}</h5>
+      <p class="card-subtitle mb-3 text-muted">{{ decode(opinion.date) }}</p>
+      <h5 class="card-title">{{ decode(opinion.author) }}</h5>
       <p class="card-subtitle font-weight-bold mb-2 text-success" *ngIf="opinion.positive == 1">POLECAM
         <i class="fa fa-star"></i>
-        <span class="text-dark font-weight-normal">{{opinion.stars}}/5</span>
+        <span class="text-dark font-weight-normal">{{ decode(opinion.stars)}}/5</span>
       </p>
       <p class="card-subtitle font-weight-bold mb-2 text-danger" *ngIf="opinion.positive == 0">NIE POLECAM
         <i class="fa fa-star"></i>
-        <span class="text-dark font-weight-normal">{{opinion.stars}}/5</span>
+        <span class="text-dark font-weight-normal">{{ decode(opinion.stars) }}/5</span>
       </p>
-      <p class="card-text">{{opinion.summary}}</p>
+      <p class="card-text">{{ decode(opinion.summary) }}</p>
       <div class="row">
         <div class="col-md-6" *ngIf="opinion.advantages.length > 0">
           <h6 class="text-success">ZALETY</h6>
           <ul>
-            <li *ngFor="let advantage of opinion.advantages">{{advantage}}</li>
+            <li *ngFor="let advantage of opinion.advantages">{{ decode(advantage) }}</li>
           </ul>
         </div>
         <div class="col-md-6" *ngIf="opinion.disadvantages.length > 0">
           <h6 class="text-danger">WADY</h6>
           <ul>
-            <li *ngFor="let disadvantage of opinion.disadvantages">{{disadvantage}}</li>
+            <li *ngFor="let disadvantage of opinion.disadvantages">{{ decode(disadvantage) }}</li>
           </ul>
         </div>
       </div>

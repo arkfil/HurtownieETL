@@ -55,6 +55,7 @@ export class EtlService {
 
       this._http.get<etlData>(url).toPromise().then(
         res => {
+          
           this._etlData.next(res);
           console.log('EtlService: tRequest: data transformed and downloaded into etlService, element_id: ' + res.element_id)
           resolve();
@@ -97,6 +98,7 @@ export class EtlService {
       this._http.get<etlData>(url).toPromise().then(
         res => {
           this._etlData.next(res);
+          console.log(this._etlData.value);
           console.log('EtlService: etlRequest: data extracted, transformed and loaded into DB')
           resolve();
         },
