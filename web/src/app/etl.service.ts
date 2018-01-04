@@ -7,8 +7,9 @@ import { promise } from 'protractor';
 @Injectable()
 export class EtlService {
 
-  private _productId: string;
+  private _apiUrl: string = "http://localhost:1995/api";
 
+  private _productId: string;
   private _eData: eData;
 
   private _etlData = new BehaviorSubject<etlData>(null);
@@ -30,7 +31,7 @@ export class EtlService {
   eRequest(): Promise<any> {
     let promise = new Promise((resolve, reject) => {
 
-      let url = 'http://localhost/api/E/' + this._productId;
+      let url = this._apiUrl + '/E/' + this._productId;
 
       this._http.get<eData>(url).toPromise().then(
         res => {
@@ -51,7 +52,7 @@ export class EtlService {
   tRequest(): Promise<any> {
     let promise = new Promise((resolve, reject) => {
 
-      let url = 'http://localhost/api/T/' + this._productId + '/' + this._eData.cached_rough_data_id;
+      let url = this._apiUrl + '/T/' + this._productId + '/' + this._eData.cached_rough_data_id;
 
       this._http.get<etlData>(url).toPromise().then(
         res => {
@@ -72,7 +73,7 @@ export class EtlService {
   lRequest(): Promise<any> {
     let promise = new Promise((resolve, reject) => {
 
-      let url = 'http://localhost/api/L/' + this._productId;
+      let url = this._apiUrl + '/L/' + this._productId;
 
       this._http.put<etlData>(url, this._etlData.value).toPromise().then(
         res => {
@@ -93,7 +94,7 @@ export class EtlService {
   etlRequest(): Promise<any> {
     let promise = new Promise((resolve, reject) => {
 
-      let url = 'http://localhost/api/ETL/' + this._productId;
+      let url = this._apiUrl + '/ETL/' + this._productId;
 
       this._http.get<etlData>(url).toPromise().then(
         res => {

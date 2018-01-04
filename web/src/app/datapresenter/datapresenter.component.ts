@@ -10,6 +10,7 @@ import { etlData } from '../models';
 export class DatapresenterComponent implements OnInit {
   
   etlData: etlData;
+  showOpinions: boolean = false;
 
   constructor(private _etl: EtlService) {
    }
@@ -20,5 +21,9 @@ export class DatapresenterComponent implements OnInit {
 
   public decode(text : string) : string {
     return decodeURIComponent(text);
+  }
+
+  toggleOpinions(){
+    this.showOpinions = !this.showOpinions;
   }
 }

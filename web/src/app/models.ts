@@ -1,5 +1,3 @@
-import { forEach } from "@angular/router/src/utils/collection";
-
 export class eData {
     status?: string;
     object_type?: string;
@@ -7,12 +5,11 @@ export class eData {
     element_id?: number;
     data?: data;
   };
-  
-export class data {
+
+class data {
     status?: string;
     description?: string;
   };
-
 
 export class etlData {
     public status: string;
@@ -21,7 +18,7 @@ export class etlData {
     public product_data: productData;
 }
 
-export class productData {
+class productData {
     public brand: string;
     public model: string;
     public type: string;
@@ -29,7 +26,7 @@ export class productData {
     public remarks: Array<string>;
 }
 
-export class opinion {
+class opinion {
     public author: string;
     public date: DateTimeFormat;
     public summary: string;
@@ -41,7 +38,7 @@ export class opinion {
     public advantages: Array<string>;
     public disadvantages: Array<string>;
 }
-export class etlError{
+export class etlRequestStatus{
     public status: string;
     public object_type: string;
     public data: etlErrorData;
