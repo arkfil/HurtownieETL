@@ -88,10 +88,9 @@ export class flowControl {
             this.status = "ok";
         }
     
-        fail(errorMsg: string){
+        fail(){
             this.fetching = false;
             this.status = "fail";
-            this.error = errorMsg;
         }
     
     }

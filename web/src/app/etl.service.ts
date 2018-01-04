@@ -35,6 +35,9 @@ export class EtlService {
 
       this._http.get<eData>(url).toPromise().then(
         res => {
+          if(res == null){
+            reject();
+          }
           this._eData = res;
           console.log('EtlService: eRequest: data extracted, cached_rough_data_id: ' + res.cached_rough_data_id)
           resolve();
@@ -56,7 +59,9 @@ export class EtlService {
 
       this._http.get<etlData>(url).toPromise().then(
         res => {
-          
+          if(res == null){
+            reject();
+          };
           this._etlData.next(res);
           console.log('EtlService: tRequest: data transformed and downloaded into etlService, element_id: ' + res.element_id)
           resolve();
@@ -77,6 +82,10 @@ export class EtlService {
 
       this._http.put<etlData>(url, this._etlData.value).toPromise().then(
         res => {
+          if(res == null){
+            reject();
+          };
+
           this._etlData.next(res);
           console.log('EtlService: lRequest: data loaded into DB')
           resolve();
@@ -98,8 +107,11 @@ export class EtlService {
 
       this._http.get<etlData>(url).toPromise().then(
         res => {
+          if(res == null){
+            reject();
+          };
+
           this._etlData.next(res);
-          console.log(this._etlData.value);
           console.log('EtlService: etlRequest: data extracted, transformed and loaded into DB')
           resolve();
         },

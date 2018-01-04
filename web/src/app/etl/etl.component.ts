@@ -18,9 +18,9 @@ export class EtlComponent implements OnInit {
   constructor(private _etlService: EtlService) { }
   public showData: boolean = false;
   
-  private productId: string = '52408448';
+  private productId: string;
   private etlData: etlData;
-  
+  private errorMsg: string;
 
   private eFlowControl: flowControl;
   private tFlowControl: flowControl;
@@ -51,15 +51,17 @@ export class EtlComponent implements OnInit {
     this.tFlowControl.reset();
     this.lFlowControl.reset();
     this.etlFlowControl.reset();
-
+    this.errorMsg = null;
     this.eFlowControl.fetching = true;
+
     this._etlService.setProductId(this.productId);
 
     this._etlService.eRequest().then(res => {
       this.eFlowControl.success();
       this.tFlowControl.allowed = true;
     }, rej => {
-      this.eFlowControl.fail("Błąd!")
+      this.errorMsg = "Wpisz prawidłowy kod produktu!";
+      this.eFlowControl.fail();
     });
   }
   
@@ -73,7 +75,8 @@ export class EtlComponent implements OnInit {
       this.tFlowControl.success();
       this.lFlowControl.allowed = true;
     }, rej => {
-      this.tFlowControl.fail("Błąd!")
+      this.errorMsg = "Wpisz prawidłowy kod produktu!";
+      this.tFlowControl.fail();
     });
   }
 
@@ -86,7 +89,8 @@ export class EtlComponent implements OnInit {
       this.lFlowControl.success();
       this.showData = true;
     }, rej => {
-      this.lFlowControl.fail("Błąd!")
+      this.lFlowControl.fail();
+      this.errorMsg = "Wpisz prawidłowy kod produktu!";
     });
 
   }
@@ -97,7 +101,7 @@ export class EtlComponent implements OnInit {
     this.tFlowControl.reset();
     this.lFlowControl.reset();
     this.etlFlowControl.reset();
-
+    this.errorMsg = null;
     this.etlFlowControl.fetching = true;
     this._etlService.setProductId(this.productId);
     
@@ -105,7 +109,8 @@ export class EtlComponent implements OnInit {
       this.etlFlowControl.success();
       this.showData = true;
     }, rej => {
-      this.etlFlowControl.fail("Błąd!")
+      this.etlFlowControl.fail();
+      this.errorMsg = "Wpisz prawidłowy kod produktu!";
     });
   }
 

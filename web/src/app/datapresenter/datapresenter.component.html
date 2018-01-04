@@ -1,32 +1,49 @@
-<div>
-  <p>
-    <strong>Typ: </strong>{{ decode(etlData.product_data.type) }}
-  </p>
-  <p>
-    <strong>Marka: </strong>{{ decode(etlData.product_data.brand) }}
-  </p>
-  <p>
-    <strong>Model: </strong>{{ decode(etlData.product_data.model) }}
-  </p>
-  <p>
-    <strong>Uwagi dodatkowe: </strong>
-  </p>
-  <ul>
-    <li *ngFor="let remark of etlData.product_data.remarks"> {{ decode(remark) }} </li>
-  </ul>
-  <p>
-    <strong>Liczba opinii:</strong> {{etlData.product_data.opinions.length}}
-  </p>
-  <div>
-    <div class="btn-group  mr-1 mb-2" role="group" aria-label="First group">
-      <button type="button" class="btn btn-primary col-sm-offset" (click)="toggleOpinions()">
-        <span *ngIf="!showOpinions">
-          <i class="fas fa-toggle-off" aria-hidden="true"></i> Pokaż opinie
-        </span>
-        <span *ngIf="showOpinions">
-          <i class="fas fa-toggle-on" aria-hidden="true"></i> Ukryj opinie
-        </span>
-      </button>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="card mb-4">
+
+      <div class="card-header">
+
+        <p>
+          <strong>Model: </strong>{{ decode(etlData.product_data.model) }}
+        </p>
+      </div>
+      <div class="card-body">
+          <p>
+              <strong>Kod produktu: </strong>{{ decode(etlData.element_id) }}
+            </p>
+        <p>
+          <strong>Typ: </strong>{{ decode(etlData.product_data.type) }}
+        </p>
+        <p>
+          <strong>Marka: </strong>{{ decode(etlData.product_data.brand) }}
+        </p>
+        <p>
+          <strong>Uwagi dodatkowe: </strong>
+        </p>
+        <ul>
+          <li *ngFor="let remark of etlData.product_data.remarks"> {{ decode(remark) }} </li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <p>
+          <strong>Liczba opinii:</strong> {{etlData.product_data.opinions.length}}
+        </p>
+
+        <div id="opinions">
+          <div class="btn-group  mr-1 mb-2" role="group" aria-label="First group">
+            <button type="button" class="btn btn-primary col-sm-offset" (click)="toggleOpinions()">
+              <span *ngIf="!showOpinions">
+                <i class="fas fa-toggle-off" aria-hidden="true"></i> Pokaż opinie
+              </span>
+              <span *ngIf="showOpinions">
+                <i class="fas fa-toggle-on" aria-hidden="true"></i> Ukryj opinie
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
     <div *ngIf="showOpinions">
       <div class="card mb-2" *ngFor="let opinion of etlData.product_data.opinions">
@@ -66,4 +83,5 @@
       </div>
     </div>
   </div>
+  <div class="col-md-2"></div>
 </div>
