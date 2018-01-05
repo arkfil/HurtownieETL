@@ -1,15 +1,15 @@
 <div class="container">
     <nav class="navbar sticky-top navbar-light bg-light">
-      <a class="navbar-brand" href=""><i class="fas fa-hdd fa-2x"></i> Hurtownie Danych</a>
+      <a class="navbar-brand" href="" (click)="takeMeTo('home', $event)"><i class="fas fa-hdd fa-2x"></i> Hurtownie Danych</a>
       <ul class="nav nav-pills">
         <li class="nav-item">
-          <a class="nav-link active" href=""><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+          <a class="nav-link active" href="home" (click)="takeMeTo('home', $event)"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="etl"><i class="fas fa-cogs"></i> Proces ETL</a>
+          <a class="nav-link"  href="etl" (click)="takeMeTo('etl', $event)"><i class="fas fa-cogs"></i> Proces ETL</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="about"><i class="fas fa-users"></i> O nas</a>
+          <a class="nav-link" href="about" (click)="takeMeTo('about', $event)"><i class="fas fa-users"></i> O nas</a>
         </li>
       </ul>
     </nav>
