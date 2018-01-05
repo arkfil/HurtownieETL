@@ -150,14 +150,18 @@ class CeneoHtmlParser{
     $prosElementsArr = $listEl -> getElementsByTagName('li');
 
     foreach($prosElementsArr as $pro) {
-      $featuresArr[] = new Feature( rawurlencode(trim( $pro->nodeValue)) ,1);
+      if(!ctype_space($pro->nodeValue)){
+        $featuresArr[] = new Feature( rawurlencode(trim( $pro->nodeValue)) ,1);
+      }
     }
 
     $listEl = self::getElementsByClass($singleOpinion, "div", "cons-cell")[0];
     $consElementsArr = $listEl -> getElementsByTagName('li');
 
     foreach($consElementsArr as $con) {
-      $featuresArr[] = new Feature(  rawurlencode(trim( $con->nodeValue)) ,0);
+      if(!ctype_space($con->nodeValue)){
+        $featuresArr[] = new Feature(  rawurlencode(trim( $con->nodeValue)) ,0);
+      }
     }
 
     return $featuresArr;
@@ -178,20 +182,26 @@ class CeneoHtmlParser{
       // $remarksPaternArr
       foreach(self::$remarksPaternArr as $pattern) {
         if(strpos($stringTitle, $pattern)!==false)
-          $remarksArr[] = new Remark( rawurlencode(trim($pattern)));
+          if(!ctype_space($pattern))
+            $remarksArr[] = new Remark( rawurlencode(trim($pattern)));
       }
 
       if (preg_match(
       '/[0-9]{0,}[.,]{0,1}[0-9]+((GB)|(gb)|(Gb)|(MB)|(Mb)|(mb)|(KB)|(Kb)|(kb)|(TB)(Tb)|(tb)|(mhz)|(Mhz)|(MHZ)|(mpx)|(Mpx)|(MPX)|(Mah)|(mah)|(MAH)|(wh)|(Wh)|(WH)|(cali)|(Cali)|(cale)|(Cale)|(cala)|(Cala)|(")){1}/',
       $stringTitle,$matches)) {
-        if(trim($matches[0])!='()' || strlen(trim($matches[0]))>0)
-          $remarksArr[] = new Remark( rawurlencode(trim($matches[0])));
+        if(trim($matches[0])!='()' || strlen(trim($matches[0]))>0){
+          if(!ctype_space(trim($matches[0])))
+            $remarksArr[] = new Remark( rawurlencode(trim($matches[0])));
+          }
       }
       if (preg_match(
       '/[0-9]{0,}[.,]{0,1}[0-9]+\s{1}((GB)|(gb)|(Gb)|(MB)|(Mb)|(mb)|(KB)|(Kb)|(kb)|(TB)(Tb)|(tb)|(mhz)|(Mhz)|(MHZ)|(mpx)|(Mpx)|(MPX)|(Mah)|(mah)|(MAH)|(wh)|(Wh)|(WH)|(cali)|(Cali)|(cale)|(Cale)|(cala)|(Cala)|(")){1}/',
       $stringTitle,$matches)) {
-        if(trim($matches[0])!='()' || strlen(trim($matches[0]))>0)
-          $remarksArr[] = new Remark( rawurlencode(trim($matches[0])));
+        if(trim($matches[0])!='()' || strlen(trim($matches[0]))>0){
+          if(!ctype_space(trim($matches[0])))
+            $remarksArr[] = new Remark( rawurlencode(trim($matches[0])));
+
+        }
       }
 
 

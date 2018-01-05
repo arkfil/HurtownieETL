@@ -124,8 +124,8 @@ class DB_ctrl{
       $feaSummary = $feature->getName();
 
       $feaId = $this->db->insertStatement($this->connection,"INSERT INTO features VALUES('null',".$this->connection->quote($feaSummary).",'$feaIsAdv')");
-
       $rel = $this->db->insertStatement($this->connection,"INSERT INTO opinions_features VALUES('$opId','$prLp','$feaId')");
+
     }
   }
 
