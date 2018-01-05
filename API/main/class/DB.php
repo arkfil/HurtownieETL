@@ -59,6 +59,17 @@ public function selectOne($connection, $statement){
     return "%";
   }
 }
+public function selectAllNumberIndexed($connection, $statement){
+  try {
+      $stmt = $connection->prepare($statement);
+      $stmt->execute();
+      $stmt->setFetchMode(PDO::FETCH_NUM);
+      $result = $stmt->fetchAll();
+      return $result;
+  }catch(PDOException $e) {
+    return "%";
+  }
+}
 public function checkOccurenceCount($connection, $statement){
   try {
       $stmt = $connection->prepare($statement);

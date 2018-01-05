@@ -8,6 +8,16 @@ class DB_ctrl{
     $this->connection = $this->db->connect();
   }
 
+  public function getWholeProduct($prId){
+    $wholePr = $this->db->selectAllNumberIndexed($this->connection,"SELECT * FROM products
+    LEFT JOIN remarks ON pr_id = rem_pr_id AND pr_lp = rem_pr_lp
+    LEFT JOIN opinions ON pr_id = op_pr_id AND pr_lp = op_pr_lp
+    LEFT JOIN opinions_features ON op_id = opfea_op_id AND op_pr_lp = opfea_pr_lp
+    LEFT JOIN features ON opfea_fea_id = fea_id
+    WHERE pr_id = $prId AND pr_lp = (SELECT pr_lp FROM products where pr_id = $prId ORDER BY pr_lp DESC LIMIT 1)");
+    return $wholePr;
+  }
+
   public function getProduct($prId){
     $prAssoc = $this->db->selectWhole($this->connection,"SELECT * FROM products WHERE pr_id = '$prId' ORDER BY pr_lp DESC LIMIT 1");
     $prAssoc = $prAssoc[0];

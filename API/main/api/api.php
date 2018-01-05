@@ -1,6 +1,7 @@
 <?php
-header('Content-type:application/json;charset=utf-8');
 if($_GET['purpose']=='ETL'){
+  header('Content-type:application/json;charset=utf-8');
+
   if(!empty($_GET['id'])){
     $ETLHndl = new ETLProcessHandler;
     $productObj = $ETLHndl->start($_GET['id']);
@@ -13,6 +14,8 @@ if($_GET['purpose']=='ETL'){
     echo 'error';
   }
 }else if($_GET['purpose']=='E'){
+  header('Content-type:application/json;charset=utf-8');
+
   if(!empty($_GET['id'])){
     $eh = new ExtractHandler;
     $data =  $eh->extractData($_GET['id']);
@@ -29,6 +32,7 @@ if($_GET['purpose']=='ETL'){
       }';
   }
 }else if($_GET['purpose']=='T'){
+  header('Content-type:application/json;charset=utf-8');
 
     if(!empty($_GET['id']) && !empty($_GET['data'])){
     // $eh = new ExtractHandler;
@@ -49,6 +53,8 @@ if($_GET['purpose']=='ETL'){
   }
 
 }else if($_GET['purpose']=='L'){
+  header('Content-type:application/json;charset=utf-8');
+
   if($_SERVER["REQUEST_METHOD"]=="PUT"){
 
     $prJSON = json_decode(file_get_contents("php://input"),false)->product_data;
@@ -98,6 +104,42 @@ if($_GET['purpose']=='ETL'){
     //   '"data":{"status":"ok","description":"Process ended successfully"}}';
   }else{
     return 'error';
+  }
+}else if($_GET['purpose']=='csv'){
+  if(!empty($_GET['id'])){
+    $dbCtrl = new DB_ctrl();
+    $prArr = $dbCtrl->getWholeProduct($_GET['id']);
+  //  print_r($prArr);
+    //
+    foreach ($prArr as &$line) {
+      foreach ($line as &$item) {
+        $item = rawurldecode($item);
+      }
+    }
+    // for($i=0;$i<sizeof($prArr);++$i){
+    //   for($f=0;$f<sizeof($prArr[$i]);++$f){
+    //     //echo rawurldecode($prArr[$i][$f]);
+    //   }
+    //
+    // }
+
+
+
+    $temp_memory = fopen('php://memory', 'w');
+    fputs($temp_memory, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
+    fputs($temp_memory,"sep=,\n");
+    foreach ($prArr as $line) {
+      fputcsv($temp_memory, $line, ',');
+    }
+
+    fseek($temp_memory, 0);
+
+    header('Content-Type: application/csv;charset=utf-8');
+    header('Content-Disposition: attachement; filename="product_' . $_GET['id'] . '.csv";');
+
+    fpassthru($temp_memory);
+  }else{
+    echo 'error';
   }
 }else{
   echo '{"status":"error","object_type":"error_details","data":{"error_code":1,"description":"Something is wrong with url address"}}';
