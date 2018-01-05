@@ -109,21 +109,12 @@ if($_GET['purpose']=='ETL'){
   if(!empty($_GET['id'])){
     $dbCtrl = new DB_ctrl();
     $prArr = $dbCtrl->getWholeProduct($_GET['id']);
-  //  print_r($prArr);
-    //
+
     foreach ($prArr as &$line) {
       foreach ($line as &$item) {
         $item = rawurldecode($item);
       }
     }
-    // for($i=0;$i<sizeof($prArr);++$i){
-    //   for($f=0;$f<sizeof($prArr[$i]);++$f){
-    //     //echo rawurldecode($prArr[$i][$f]);
-    //   }
-    //
-    // }
-
-
 
     $temp_memory = fopen('php://memory', 'w');
     fputs($temp_memory, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
@@ -133,7 +124,6 @@ if($_GET['purpose']=='ETL'){
     }
 
     fseek($temp_memory, 0);
-
     header('Content-Type: application/csv;charset=utf-8');
     header('Content-Disposition: attachement; filename="product_' . $_GET['id'] . '.csv";');
 

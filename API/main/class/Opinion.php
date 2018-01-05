@@ -29,15 +29,17 @@ class Opinion
   }
 
   public static function compare($opOne,$opTwo){
-    // print_r($opOne->getFeatures());
-    // echo "|";
-    // print_r($opTwo->getFeatures());
-    // echo "|";
 
     if(sizeof($opOne->getFeatures())!=sizeof($opTwo->getFeatures())) return false;
 
-    for($z=0;$z<sizeof($opOne->getFeatures());++$z){
-      if(!Feature::compare(($opOne->getFeatures())[$z],($opTwo->getFeatures())[$z])) return false;
+    $opFeaturesArrOne = $opOne->getFeatures();
+    $opFeaturesArrTwo = $opOne->getFeatures();
+    sort($opFeaturesArrOne);
+    sort($opFeaturesArrTwo);
+
+
+    for($z=0;$z<sizeof($opFeaturesArrOne);++$z){
+      if(!Feature::compare($opFeaturesArrOne[$z],$opFeaturesArrTwo[$z])) return false;
     }
 
     if($opOne->getId()!=$opTwo->getId()) return false;
