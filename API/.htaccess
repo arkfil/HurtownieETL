@@ -9,7 +9,9 @@ RewriteRule ^(.*)\.(gif|jpg|png|jpeg|css|js|swf|ttf|woff|woff2)$ $1.$2 [L,NC]
 
 RewriteRule ^([^/]+)/?([^/]*)/?([^/]*)/?([^/]*)/?$ index.php?url=$1&purpose=$2&id=$3&data=$4 [L,QSA]
 
-
+Header set Access-Control-Allow-Origin: "*"
+Header set Access-Control-Allow-Headers: "Origin, X-Requested-With, Content-Type, Accept"
+Header set Access-Control-Allow-Methods: "POST, GET, OPTIONS, DELETE, PUT"
 
 
 
