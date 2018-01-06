@@ -11,12 +11,14 @@ export class DatapresenterComponent implements OnInit {
   
   etlData: etlData;
   showOpinions: boolean = false;
+  downloadCsvLink: string;
 
   constructor(private _etl: EtlService) {
    }
 
   ngOnInit() {
     this._etl.etlData.subscribe(res => this.etlData = res);
+    this._etl.csvDownloadLink.subscribe(res => this.downloadCsvLink = res);
   }
 
   public decode(text : string) : string {

@@ -15,11 +15,15 @@ export class EtlService {
   private _etlData = new BehaviorSubject<etlData>(null);
   public etlData = this._etlData.asObservable();
 
+  private _csvDownloadLink = new BehaviorSubject<string>(null);
+  public csvDownloadLink = this._csvDownloadLink.asObservable();
+
   constructor(private _http: HttpClient) { }
 
   setProductId(productId: string) {
     this.reset();
     this._productId = productId;
+    this._csvDownloadLink.next(this._apiUrl + '/csv/' + productId);
   }
 
   reset() {
