@@ -1,5 +1,5 @@
 <?php
-if($_GET['purpose']=='ETL'){
+if($_GET['purpose']=='etl'){
   header('Content-type:application/json;charset=utf-8');
 
   if(!empty($_GET['id'])){
@@ -13,7 +13,7 @@ if($_GET['purpose']=='ETL'){
   }else{
     echo 'error';
   }
-}else if($_GET['purpose']=='E'){
+}else if($_GET['purpose']=='e'){
   header('Content-type:application/json;charset=utf-8');
 
   if(!empty($_GET['id'])){
@@ -31,7 +31,7 @@ if($_GET['purpose']=='ETL'){
         "product_data":{"status":"ok","description":"Process ended successfully"}
       }';
   }
-}else if($_GET['purpose']=='T'){
+}else if($_GET['purpose']=='t'){
   header('Content-type:application/json;charset=utf-8');
 
     if(!empty($_GET['id']) && !empty($_GET['data'])){
@@ -52,7 +52,7 @@ if($_GET['purpose']=='ETL'){
       '"product_data":'.$productObj.'}';
   }
 
-}else if($_GET['purpose']=='L'){
+}else if($_GET['purpose']=='l'){
   header('Content-type:application/json;charset=utf-8');
 
   if($_SERVER["REQUEST_METHOD"]=="PUT"){
