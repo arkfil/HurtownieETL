@@ -1,0 +1,117 @@
+<?php
+
+/**
+ * Klasa do obslugi polaczen z baza danych aplikacji.
+ */
+class DB{
+  private $serverName;
+  private $userNname;
+  private $password;
+  private $dbName;
+ 
+  
+  /**
+   * Konstruktor klasy.
+   * @param $pServerName Nazwa serwera.
+   * @param $pUserNname Nazwa uzytkownika.
+   * @param $pPassword Haslo.
+   * @param $pDbName Nazwa bazy danych.
+   * @return Product Obiekt typu Product.
+   */
+  function __construct($pServerName,$pUserNname,$pPassword,$pDbName){
+    $this->serverName=$pServerName;
+    $this->userNname=$pUserNname;
+    $this->password=$pPassword;
+    $this->dbName = $pDbName;
+    ini_set('max_execution_time', 0);
+  }
+
+  /**
+   * Metoda do otwarcia polaczenia z serweram bazy danych.
+   * @return PDO Obiekt z aktywnym polaczeniem lub '%' jezeli nie udalo sie nawiazac polaczenia
+   */ 
+  public function connect(){
+    try {
+      $connection = new PDO("mysql:host=".$this->serverName.";dbname=".$this->dbName, $this->userNname, $this->password);
+      // set the PDO error mode to exception
+      $connection -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      return $connection;
+    }catch(PDOException $e){
+      // return $e->getMessage();
+      return "%";
+    }
+  }
+  
+  /**
+   * Metoda do wywolania polecenia INSERT w bazie danych
+   * @param $connection obiekt PDO z aktywnym polaczeniem
+   * @param $statement Polecenie SQL typu INSERT
+   * @return integer identyfikator wprowadzonego rekordu lub '%' jezeli wystapil blad
+   */
+  public function insertStatement($connection, $statement){
+    try {
+      $connection->exec($statement);
+      return $connection->lastInsertId();
+    }catch(PDOException $e){
+      return "%";
+    }
+  }
+  
+  
+  /**
+   * Metoda do wywolania polecenia SELECT na wielu rekordach
+   * @param $connection obiekt PDO z aktywnym polaczeniem
+   * @param $statement Polecenie SQL typu SELECT
+   * @return Array tablica z rekordami zwroconymi przez zapytanie lub '%' jezeli wystapil blad
+   */
+  public function selectWhole($connection, $statement){
+  try {
+      $stmt = $connection->prepare($statement);
+      $stmt->execute();
+      // set the resulting array to associative
+      $stmt->setFetchMode(PDO::FETCH_ASSOC);
+      $result = $stmt->fetchAll();
+      // echo json_encode($result);
+      return $result;
+  }catch(PDOException $e) {
+    return "%";
+  }
+}
+
+/**
+ * Metoda do wywolania polecenia SELECT pobierajaca jeden rekord
+ * @param $connection obiekt PDO z aktywnym polaczeniem
+ * @param $statement Polecenie SQL typu SELECT
+ * @return Array tablica z rekordem zwroconym przez zapytanie lub '%' jezeli wystapil blad
+ */
+public function selectOne($connection, $statement){
+  try {
+      $stmt = $connection->prepare($statement);
+      $stmt->execute();
+      $stmt->setFetchMode(PDO::FETCH_NUM);
+      $result = $stmt->fetch();
+      return $result;
+  }catch(PDOException $e) {
+    return "%";
+  }
+}
+
+/**
+ * Metoda do sprawdzenia liczby wnikow zapytnia SQL
+ * @param $connection obiekt PDO z aktywnym polaczeniem
+ * @param $statement Polecenie SQL
+ * @return integer liczba wynikow lub '%' jezeli wystapil blad
+ */
+public function checkOccurenceCount($connection, $statement){
+  try {
+      $stmt = $connection->prepare($statement);
+      $stmt->execute();
+      $count = $stmt->fetch(PDO::FETCH_NUM);
+      return reset($count);
+  }catch(PDOException $e) {
+    return "%";
+  }
+}
+}
+?>
+
