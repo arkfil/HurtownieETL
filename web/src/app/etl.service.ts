@@ -7,7 +7,7 @@ import { promise } from 'protractor';
 @Injectable()
 export class EtlService {
 
-  private _apiUrl: string = "http://localhost:1995/api";
+  private _apiUrl: string = "/php/api";
 
   private _productId: string;
   private _eData: eData;

@@ -4,7 +4,7 @@ class DB_ctrl{
   private $db;
   private $connection;
   function __construct(){
-    $this->db = new DB("localhost","user","password","ceneo_etl");
+    $this->db = new DB("localhost","wmichalw_etl","ceneoEtl","wmichalw_etl");
     $this->connection = $this->db->connect();
   }
 
