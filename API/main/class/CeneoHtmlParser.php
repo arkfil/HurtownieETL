@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Klasa do parsowania zrodla strony ceneo
+ */
 class CeneoHtmlParser{
   private static $remarksPaternArr = array(
   "Gwiezdna Szarość","Biało-Srebrny","Brązowy","Czarno-biały","Czarno-Grafitowy","Czarno-Srebrny","Niebiesko-Czarny", "Niebiesko-czerwony","Czerwony", "Kremowy","Niebieski","Różowy","Wielokolorowy",
@@ -36,7 +39,11 @@ class CeneoHtmlParser{
   );
 
 
-
+/**
+ * Metoda do pobierania nazwy produktu.
+ * @param $ceneoDom obiekt typu DOMDocument 
+ * @return String z nazwa produktu
+ */
   public function retriveProductName($ceneoDom){
 
     $contentNode=$ceneoDom->getElementById("body");
@@ -50,11 +57,20 @@ class CeneoHtmlParser{
   //
   // }
 
+  /**
+   * Metoda do pobierania marki produktu.
+   * @param $ceneoDom obiekt typu DOMDocument
+   * @return String z marką produktu
+   */
   public function retriveProductBrand($ceneoDom){
     $prBrand = self::getElementAtributeValueByAnotherAtribute($ceneoDom, 'meta', 'content', 'property', 'og:brand');
     return rawurlencode(trim($prBrand));
   }
-
+  /**
+   * Metoda do pobierania typu produktu.
+   * @param $ceneoDom obiekt typu DOMDocument
+   * @return String z typem produktu
+   */
   public function retriveProductType($ceneoDom){
     $contentNode=$ceneoDom->getElementById("body");
     $productInfoArr = self::getElementsByClass($contentNode, 'span', 'breadcrumb');
@@ -63,11 +79,19 @@ class CeneoHtmlParser{
 
     return rawurlencode(trim($productCategory));
   }
-
+  /**
+   * Metoda do pobierania alternatywnego typu produktu.
+   * @param $ceneoDom obiekt typu DOMDocument
+   * @return String z alternatywnego typem produktu.
+   */
   public function retriveProductTypeAlternative($ceneoDom){
     return self::getElementAtributeValueByAnotherAtribute($ceneoDom, 'meta', 'content', 'property', 'og:type');
   }
-
+  /**
+   * Metoda do pobierania modelu produktu.
+   * @param $ceneoDom obiekt typu DOMDocument
+   * @return String z modelem produktu.
+   */
   public function retriveProductModel($ceneoDom){
     $contentNode=$ceneoDom->getElementById("body");
 
@@ -78,13 +102,21 @@ class CeneoHtmlParser{
     // return rawurlencode(trim($this->cutOutRemarks($prModel)));
     return rawurlencode(trim($prModel));
   }
-
+  /**
+   * Metoda do wyciagania atrybutow produktu
+   * @param $ceneoDom obiekt typu DOMDocument
+   * @return Tablica z atrybutami produktu.
+   */
   public function getRemarks($ceneoDom){
 
 
     return self::cutOutRemarks($ceneoDom);
   }
-
+  /**
+   * Metoda do pobierania opini produktu.
+   * @param $ceneoDomArr tablica obiektów typu DOMDocument.
+   * @return Tablica z opiniami produktu
+   */
   public function retriveOpinions($ceneoDomArr){
     $opinions = array();
     for($i=0;$i<sizeof($ceneoDomArr);++$i){
@@ -93,7 +125,11 @@ class CeneoHtmlParser{
 
     return $opinions;
   }
-
+  /**
+   * Metoda do pobierania stron z opiniami o produkcie.
+   * @param $singlePage obiekt typu DOMDocument ze stroną produktu
+   * @param $opninionsArray referencja do tablicy obiektów typu String z opiniami. Jest wypełniana po wywołaniu metody
+   */
   private function retrivePagessOpinions($singlePage, &$opninionsArray){
 
     //$opinion =
@@ -117,32 +153,82 @@ class CeneoHtmlParser{
     }
 
   }
+  
+  /**
+   * Metoda do pobierania id opinii produktu.
+   * @param $singleOpinion obiekt typu DOMDocument z pojedynczą opinią
+   * @return Id opnii
+   */
   private function retriveOpinionId($singleOpinion){
     return self::getElementsByClass($singleOpinion, "button", "js_vote-yes")[0] -> getAttribute("data-review-id");
   }
+  
+  /**
+   * Metoda do pobierania daty opinii produktu.
+   * @param $singleOpinion obiekt typu DOMDocument z pojedynczą opinią
+   * @return String z datą opinii produktu.
+   */
   private function retriveOpinionDate($singleOpinion){
     return $singleOpinion -> getElementsByTagName("time")[0] -> getAttribute("datetime");
   }
+  /**
+   * Metoda do pobierania podsumowania opinii produktu.
+   * @param $singleOpinion obiekt typu DOMDocument z pojedynczą opinią
+   * @return String z podsumowaniem opinii produktu.
+   */
   private function retriveOpinionSummary($singleOpinion){
     return self::getElementsByClass($singleOpinion, "p", "product-review-body")[0] -> nodeValue;
   }
+  /**
+   * Metoda do pobierania liczby gwiazdek w opinii produktu.
+   * @param $singleOpinion obiekt typu DOMDocument z pojedynczą opinią
+   * @return String z liczbą gwiazdek w opinii produktu.
+   */
   private function retriveOpinionStars($singleOpinion){
     $rate = self::getElementsByClass($singleOpinion, "span", "review-score-count")[0] -> nodeValue;
     return substr($rate,0,strpos($rate,"/"));
   }
+  /**
+   * Metoda do pobierania autora opinii produktu.
+   * @param $singleOpinion obiekt typu DOMDocument z pojedynczą opinią
+   * @return String z autorem opini produktu.
+   */
   private function retriveOpinionAuthor($singleOpinion){
     $name = self::getElementsByClass($singleOpinion, "div", "reviewer-name-line")[0] -> nodeValue;
     return trim($name);
   }
+  /**
+   * Metoda do pobierania informacji typu polecam/nie polecam z opinii.
+   * @param $singleOpinion obiekt typu DOMDocument z pojedynczą opinią
+   * @return String z informacją polecam/nie polecam.
+   */
   private function retriveOpinionTypeOfEfect($singleOpinion){
     return sizeof(self::getElementsByClass($singleOpinion, "em", "product-recommended"));
   }
+    
+  /**
+   * Metoda do pobierania liczby "łapek w górę" dla opinii produktu.
+   * @param $singleOpinion obiekt typu DOMDocument z pojedynczą opinią
+   * @return Liczba "łapek w górę"
+   */
   private function retriveOpinionUpVotesCount($singleOpinion){
     return self::getElementsByClass($singleOpinion, "button", "js_vote-yes")[0] -> getAttribute("data-total-vote");
   }
+    
+  /**
+   * Metoda do pobierania liczby "łapek w dół" dla opinii produktu.
+   * @param $singleOpinion obiekt typu DOMDocument z pojedynczą opinią
+   * @return Liczba "łapek w dół"
+   */
   private function retriveOpinionDownVotesCount($singleOpinion){
     return self::getElementsByClass($singleOpinion, "button", "js_vote-no")[0] -> getAttribute("data-total-vote");
   }
+    
+  /**
+   * Metoda do pobierania listy zalet i wad z opinii produktu.
+   * @param $singleOpinion obiekt typu DOMDocument z pojedynczą opinią
+   * @return Tablica obiektów typu Feature
+   */
   private function retriveOpinionFeatures($singleOpinion){
     $featuresArr = array();
 
@@ -150,23 +236,24 @@ class CeneoHtmlParser{
     $prosElementsArr = $listEl -> getElementsByTagName('li');
 
     foreach($prosElementsArr as $pro) {
-      if(!ctype_space($pro->nodeValue)){
-        $featuresArr[] = new Feature( rawurlencode(trim( $pro->nodeValue)) ,1);
-      }
+      $featuresArr[] = new Feature( rawurlencode(trim( $pro->nodeValue)) ,1);
     }
 
     $listEl = self::getElementsByClass($singleOpinion, "div", "cons-cell")[0];
     $consElementsArr = $listEl -> getElementsByTagName('li');
 
     foreach($consElementsArr as $con) {
-      if(!ctype_space($con->nodeValue)){
-        $featuresArr[] = new Feature(  rawurlencode(trim( $con->nodeValue)) ,0);
-      }
+      $featuresArr[] = new Feature(  rawurlencode(trim( $con->nodeValue)) ,0);
     }
 
     return $featuresArr;
   }
-
+  
+  /**
+   * Metoda do wyciagania atrybutow produktu
+   * @param $ceneoDom obiekt typu DOMDocument
+   * @return Tablica z atrybutami produktu.
+   */
   private static function cutOutRemarks($ceneoDom){
       $contentNode=$ceneoDom->getElementById("body");
       $productInfoArr = self::getElementsByClass($contentNode, 'nav', 'breadcrumbs');
@@ -182,37 +269,34 @@ class CeneoHtmlParser{
       // $remarksPaternArr
       foreach(self::$remarksPaternArr as $pattern) {
         if(strpos($stringTitle, $pattern)!==false)
-          if(!ctype_space($pattern))
-            $remarksArr[] = new Remark( rawurlencode(trim($pattern)));
+          $remarksArr[] = new Remark( rawurlencode(trim($pattern)));
       }
 
       if (preg_match(
       '/[0-9]{0,}[.,]{0,1}[0-9]+((GB)|(gb)|(Gb)|(MB)|(Mb)|(mb)|(KB)|(Kb)|(kb)|(TB)(Tb)|(tb)|(mhz)|(Mhz)|(MHZ)|(mpx)|(Mpx)|(MPX)|(Mah)|(mah)|(MAH)|(wh)|(Wh)|(WH)|(cali)|(Cali)|(cale)|(Cale)|(cala)|(Cala)|(")){1}/',
       $stringTitle,$matches)) {
-        if(trim($matches[0])!='()' || strlen(trim($matches[0]))>0){
-          if(!ctype_space(trim($matches[0])))
-            $remarksArr[] = new Remark( rawurlencode(trim($matches[0])));
-          }
+        if(trim($matches[0])!='()' || strlen(trim($matches[0]))>0)
+          $remarksArr[] = new Remark( rawurlencode(trim($matches[0])));
       }
       if (preg_match(
       '/[0-9]{0,}[.,]{0,1}[0-9]+\s{1}((GB)|(gb)|(Gb)|(MB)|(Mb)|(mb)|(KB)|(Kb)|(kb)|(TB)(Tb)|(tb)|(mhz)|(Mhz)|(MHZ)|(mpx)|(Mpx)|(MPX)|(Mah)|(mah)|(MAH)|(wh)|(Wh)|(WH)|(cali)|(Cali)|(cale)|(Cale)|(cala)|(Cala)|(")){1}/',
       $stringTitle,$matches)) {
-        if(trim($matches[0])!='()' || strlen(trim($matches[0]))>0){
-          if(!ctype_space(trim($matches[0])))
-            $remarksArr[] = new Remark( rawurlencode(trim($matches[0])));
-
-        }
+        if(trim($matches[0])!='()' || strlen(trim($matches[0]))>0)
+          $remarksArr[] = new Remark( rawurlencode(trim($matches[0])));
       }
-
-
-
-
-
 
     return $remarksArr;
   }
 
-
+  /**
+   * Metoda do pobierania wartosci atrybutu na podstawie wartosci innego atrybutu produktu.
+   * @param $dom obiekt typu DOMDocument
+   * @param $elementName String z nazwą przeszukiwanego tagu obiektu $dom
+   * @param $atributeName String z nazwą poszukiwanego atrybutu
+   * @param $anotherAtributeName String z nazwą innego atrybutu
+   * @param $anotherAtributeValue String z wartoscią innego atrybutu
+   * @return String z wartoscią atrybutu $atributeName
+   */
   private static function getElementAtributeValueByAnotherAtribute($dom, $elementName, $atributeName, $anotherAtributeName, $anotherAtributeValue){
     $nodes=array();
 
@@ -229,7 +313,13 @@ class CeneoHtmlParser{
   }
 
 
-
+  /**
+   * Metoda do pobierania tablicy węzłów z obiektu typu DOMDocument na podstawie nazwy klasy DOM
+   * @param $parentNode referencja do obiektu typu DOMDocument
+   * @param $tagName nazwa znacznika HTML
+   * @param $className nazwa klasy elementu
+   * @return Tablica z węzłami
+   */
   private static function getElementsByClass(&$parentNode, $tagName, $className) {
       $nodes=array();
 
@@ -243,7 +333,11 @@ class CeneoHtmlParser{
 
       return $nodes;
   }
-
+  /**
+   * Metoda do pobierania liczby opinii produktu.
+   * @param $roughPage obiekt typu DOMDocument
+   * @return Liczba opinii
+   */
 
   public static function getOpinionsCount($roughPage){
         $contentNode=$roughPage->getElementById("body");

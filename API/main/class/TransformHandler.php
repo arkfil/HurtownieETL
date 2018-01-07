@@ -1,6 +1,14 @@
 <?php
+/**
+ * Klasa do obs³ugi TRANSFORM z procesu ETL
+ */
 class TransformHandler{
-
+    /**
+     * Metoda do pobierania Produktu na podstawie jego ID.
+     * @param $roughData obiekt typu DOMDocument
+     * @param $productId Identyfikator produktu
+     * @return Obiekt typu Product
+     */
   public static function transformData($roughData, $productId){
     $ceneoParser = new CeneoHtmlParser;
 

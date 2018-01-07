@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Klasa do przechowywania opinii
+ */
 class Opinion
 {
   private $id;
@@ -14,6 +16,19 @@ class Opinion
 
   private $features;
 
+  /**
+   * Konstruktor klasy
+   * @param $pId Identyfikator opinii
+   * @param $pDate Data
+   * @param $pSummary Podsumowanie
+   * @param $pStars Liczba gwiazdek
+   * @param $pAuthor Autor
+   * @param $pIsPositive Polecam/nie polecam
+   * @param $pUpVotesCount Liczba "³apek w górê"
+   * @param $pDownVotesCount Liczba "³apek w dó³"
+   * @param $pFeatures Wady i zalety
+   * 
+   */
   function __construct($pId, $pDate, $pSummary, $pStars, $pAuthor, $pIsPositive, $pUpVotesCount, $pDownVotesCount, $pFeatures)
   {
     $this->id = $pId;
@@ -28,18 +43,23 @@ class Opinion
     $this->features = $pFeatures;
   }
 
+  
+  /** 
+   * Metoda do porównywania dwóch opinii
+   * @param $opOne Opinia 1
+   * @param $opTwo Opinia 2
+   * @return false je¿eli ró¿ne lub true je¿eli takie same
+   */
   public static function compare($opOne,$opTwo){
+    // print_r($opOne->getFeatures());
+    // echo "|";
+    // print_r($opTwo->getFeatures());
+    // echo "|";
 
     if(sizeof($opOne->getFeatures())!=sizeof($opTwo->getFeatures())) return false;
 
-    $opFeaturesArrOne = $opOne->getFeatures();
-    $opFeaturesArrTwo = $opOne->getFeatures();
-    sort($opFeaturesArrOne);
-    sort($opFeaturesArrTwo);
-
-
-    for($z=0;$z<sizeof($opFeaturesArrOne);++$z){
-      if(!Feature::compare($opFeaturesArrOne[$z],$opFeaturesArrTwo[$z])) return false;
+    for($z=0;$z<sizeof($opOne->getFeatures());++$z){
+      if(!Feature::compare(($opOne->getFeatures())[$z],($opTwo->getFeatures())[$z])) return false;
     }
 
     if($opOne->getId()!=$opTwo->getId()) return false;
@@ -78,7 +98,9 @@ class Opinion
   public function getFeatures(){            return $this->features;  }
 
 
-
+/** 
+ * Metoda do rzutowania obiektu na typ String
+ */
   public function __toString(){
     $opStr = '{'.
            '"id":"'.$this->id.'",'.

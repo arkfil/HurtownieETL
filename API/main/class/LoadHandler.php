@@ -1,6 +1,14 @@
 <?php
+/**
+ * Klasa do obs³ugi LOAD z procesu ETL
+ */
 class LoadHandler{
 
+    /**
+     * Metoda do kompleksowego ³adowania produktu do bazy danych
+     * @param $productObj Obiekt typu Product
+     * @return obiekt typu Product, je¿eli nie by³o w bazie lub obiekt typu Product z nowym LP je¿eli ju¿ istnia³ pod wskazanym ID, lub obiekt typu Product, je¿eli taki sam ju¿ istnieje w bazie 
+     */
   public static function loadData($productObj){
     $dbCtrl = new DB_ctrl();
 

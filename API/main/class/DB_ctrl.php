@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Klasa do obs³ugi bazy danych aplikacji.
+ */
 class DB_ctrl{
   private $db;
   private $connection;
@@ -7,17 +9,11 @@ class DB_ctrl{
     $this->db = new DB("localhost","user","password","ceneo_etl");
     $this->connection = $this->db->connect();
   }
-
-  public function getWholeProduct($prId){
-    $wholePr = $this->db->selectAllNumberIndexed($this->connection,"SELECT * FROM products
-    LEFT JOIN remarks ON pr_id = rem_pr_id AND pr_lp = rem_pr_lp
-    LEFT JOIN opinions ON pr_id = op_pr_id AND pr_lp = op_pr_lp
-    LEFT JOIN opinions_features ON op_id = opfea_op_id AND op_pr_lp = opfea_pr_lp
-    LEFT JOIN features ON opfea_fea_id = fea_id
-    WHERE pr_id = $prId AND pr_lp = (SELECT pr_lp FROM products where pr_id = $prId ORDER BY pr_lp DESC LIMIT 1)");
-    return $wholePr;
-  }
-
+  /**
+   * Metoda do pobierania produktu z bazy danych.
+   * @param $prId identyfikator produktu.  
+   * @return Obiekt typu Product.
+   */
   public function getProduct($prId){
     $prAssoc = $this->db->selectWhole($this->connection,"SELECT * FROM products WHERE pr_id = '$prId' ORDER BY pr_lp DESC LIMIT 1");
     $prAssoc = $prAssoc[0];
@@ -28,13 +24,22 @@ class DB_ctrl{
 
     return $prObject;
   }
-
+  /**
+   * Metoda do pobierania liczby porz¹dkowej ostatniego produktu.
+   * @param $prId identyfikator produktu.
+   * @return Liczbê porz¹dkow¹.
+   */
   public function getLatestProductsLp($prId){
     $prAssoc = $this->db->selectWhole($this->connection,"SELECT * FROM products WHERE pr_id = '$prId' ORDER BY pr_lp DESC LIMIT 1");
     $prAssoc = $prAssoc[0];
     return $prAssoc["pr_lp"];
   }
-
+  /**
+   * Metoda do pobiernia listy opinii z bazy danych.
+   * @param $prId identfikator produktu. 
+   * @param $prLp lp produktu.
+   * @return Tablica z opiniami dotycz¹cymi produktu
+   */
   public function getOpinionsArray($prId,$prLp){
     $opsAssoc = $this->db->selectWhole($this->connection, "SELECT * FROM opinions WHERE op_pr_id = '$prId' AND op_pr_lp = '$prLp' ORDER BY op_date DESC");
     $opObjArr = array();
@@ -54,7 +59,12 @@ class DB_ctrl{
 
     return $opObjArr;
   }
-
+  /**
+   * Metoda do pobiernia listy w³asciwosci produktu.
+   * @param $prId identfikator produktu.
+   * @param $prLp lp produktu.
+   * @return Tablica z w³asciwosciami produktu.
+   */
   public function getFeaturesArray($opId,$prLp){
     $feaObjArr = array();
     $feasAssoc = $this->db->selectWhole($this->connection,
@@ -65,7 +75,12 @@ class DB_ctrl{
     }
     return $feaObjArr;
   }
-
+  /**
+   * Metoda do pobiernia atrybutów opinii z bazy danych.
+   * @param $prId identfikator produktu.
+   * @param $prLp lp produktu.
+   * @return Tablica z atrybutami dotycz¹cymi produktu.
+   */
   public function getProductRemarksArray($prId, $prLp){
     $remObjArr = array();
     $remAssoc = $this->db->selectWhole($this->connection, "SELECT * FROM remarks WHERE rem_pr_id = '$prId' AND rem_pr_lp = '$prLp'");
@@ -75,15 +90,31 @@ class DB_ctrl{
     return $remObjArr;
   }
 
-
+  /**
+   * Metoda do sprawdzania obecnosci produku w bazie danych.
+   * @param $prId identfikator produktu.
+   * @return Liczba wyst¹pien produktu o danym id.
+   */
   public function isProductInDB($prId){
       return $this->db->checkOccurenceCount($this->connection,"SELECT count(*) FROM products WHERE pr_id = '$prId'");
   }
-
+  /**
+   * Metoda do zapisywania informacji o produkcie w bazie danych.
+   * @param $Id identfikator produktu.
+   * @param $Lp lp produktu.
+   * @param $type typ produktu.
+   * @param $brand marka produktu.
+   * @param $model model produktu.
+   */
   public function saveProductInfo($id,$lp,$type,$brand,$model){
       $this->db->insertStatement($this->connection,"INSERT INTO products VALUES('$id','$lp',".$this->connection->quote($type).",".$this->connection->quote($brand).",".$this->connection->quote($model).")");
   }
-
+  /**
+   * Metoda do zapisywania atrybutów produktu w bazie danych.
+   * @param $remarksArr tablica z atrybutami produktu.
+   * @param $prId identfikator produktu.
+   * @param $prLp lp produktu.   
+   */
   public function saveRemarks($remarksArr,$prId,$prLp){
       $remName;
       foreach($remarksArr as $remark) {
@@ -91,7 +122,12 @@ class DB_ctrl{
         $this->db->insertStatement($this->connection,"INSERT INTO remarks VALUES('null',".$this->connection->quote($remName).",'$prId','$prLp')");
       }
   }
-
+  /**
+   * Metoda do zapisywania opinii produktu w bazie danych.
+   * @param $opinionsArr tablica z opiniami produktu.
+   * @param $prId identfikator produktu.
+   * @param $prLp lp produktu.
+   */
   public function saveOpinions($opinionsArr,$prId,$prLp){
 
       foreach($opinionsArr as $opinion) {
@@ -114,21 +150,33 @@ class DB_ctrl{
         $this -> saveFeatures($opFeaturesArr,$opId, $prLp);
       }
   }
-
+  /**
+   * Metoda do zamkniêcia po³aczenia z baza danych.
+   */
   public function disconnect(){
     $this->connection = null;
   }
+  /**
+   * Metoda do zapisywania wad i zlet w opinii produktu w bazie danych.
+   * @param $featyresArr tablica z wadami i zaletami opinii produktu.
+   * @param $opId identfikator opinii produktu.
+   * @param $prLp lp produktu.
+   */
   private function saveFeatures($featyresArr,$opId, $prLp){
     foreach($featyresArr as $feature) {
       $feaIsAdv = $feature->getIsAdv();
       $feaSummary = $feature->getName();
 
       $feaId = $this->db->insertStatement($this->connection,"INSERT INTO features VALUES('null',".$this->connection->quote($feaSummary).",'$feaIsAdv')");
-      $rel = $this->db->insertStatement($this->connection,"INSERT INTO opinions_features VALUES('$opId','$prLp','$feaId')");
 
+      $rel = $this->db->insertStatement($this->connection,"INSERT INTO opinions_features VALUES('$opId','$prLp','$feaId')");
     }
   }
-
+  /**
+   * Metoda do zapisywania kodu Ÿród³owego strony produktu w bazie danych.
+   * @param $domArr tablica kodami Ÿród³owymi stron produktu.
+   * @return Identyfikator utworzonego wpisu w bazie. 
+   */
   public function cacheProductHtml($domArr){
     $productPage = $this->connection->quote($domArr[0]->saveHTML($domArr[0]));
     $cachedId = $this->db->insertStatement($this->connection,"INSERT INTO cached_html_products VALUES('null',$productPage)");
@@ -140,7 +188,11 @@ class DB_ctrl{
 
     return $cachedId;
   }
-
+  /**
+   * Metoda do pobierania kodu Ÿród³owego strony produktu z bazy danych.
+   * @param $inCacheId Identyfikator wpisu w bazie.
+   * @return Kod Ÿród³owy strony produktu..
+   */
   public function retriveCachedRawData($inCacheId){
     $data = array();
     $dom = new DOMDocument('1.0', 'utf-8');

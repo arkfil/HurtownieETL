@@ -1,6 +1,14 @@
 <?php
+/**
+ * Klasa do obs³ugi EXTRACT z procesu ETL
+ */
 class ExtractHandler{
 
+    /**
+     * Metoda do pobierania danych produktu
+     * @param $productID Identyfikator produktu
+     * @return Obiekt typu DOMDocument dla wskazanego produktu
+     */
   public static function extractData($productId){
 
     $domDataLoader = new DomDataLoader();

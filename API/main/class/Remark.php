@@ -1,8 +1,14 @@
 <?php
+/**
+ * Klasa do przechowywania atrybutów produktów.
+ */
 class Remark{
 
   private $name;
-
+  /**
+   * Konstruktor klasy
+   * @param $pName Nazwa produktu.
+   */
   function __construct($pName)
   {
     $this->name = $pName;
@@ -11,7 +17,9 @@ class Remark{
   public function setName($pName){  $this->name = $pName; }
   public function getName(){        return $this->name; }
 
-
+  /**
+   * Metoda do rzutowania obiektu na typ String
+   */
   public function __toString(){
     return '"'.$this->name.'"';
   }

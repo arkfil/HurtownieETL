@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Klasa do przechowywania produktów.
+ */
 class Product{
   private $id;
   private $type;
@@ -23,7 +25,15 @@ class Product{
   public function getRemarks(){   return $this->remarks; }
   public function getOpinions(){  return $this->opinions; }
 
-
+  /**
+   * Konstruktor klasy
+   * @param $pId Identyfikator produktu.
+   * @param $pType Typ produktu.
+   * @param $pBrand Marka prodktu.
+   * @param $pModel Model prouktu.
+   * @param $pRemarks Atrybuty produktu.
+   * @param $pOpinions Opinie produktu.
+   */
   function __construct($pId, $pType, $pBrand, $pModel, $pRemarks, $pOpinions) {
     $this->id = $pId;
     $this->type = $pType;
@@ -32,7 +42,12 @@ class Product{
     $this->remarks = $pRemarks;
     $this->opinions = $pOpinions;
   }
-
+  /**
+   * Metoda do porównywania dwóch produktów
+   * @param $prOne Produkt 1
+   * @param $prTwo Produkt 2
+   * @return false je¿eli ró¿ne lub true je¿eli takie same
+   */
   public static function compare($prOne,$prTwo){
     if(strlen($prOne) != strlen($prTwo)) return false;
 
@@ -55,7 +70,9 @@ class Product{
 
     return true;
   }
-
+  /**
+   * Metoda do rzutowania obiektu na typ String
+   */
   public function __toString()
   {
 
