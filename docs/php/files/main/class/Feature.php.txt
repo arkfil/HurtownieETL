@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * Klasa przechowujaca wady i zalety w opinii produktu
+ */
+class Feature{
+  private $name;
+  private $isAdv;
+
+  /**
+   * Konstruktor klasy
+   * @param $pName nazwa
+   * @param $pIsAdv flaga czy Feature jest wada (0) czy zaleta (1)
+   */
+  function __construct($pName, $pIsAdv){
+    $this->name = $pName;
+    $this->isAdv = $pIsAdv;
+  }
+
+  /**
+   * Metoda do porownywania dwoch obiektow typu Feature
+   * @param $feaOne Obiekt typu Feature
+   * @param $feaTwo Obiekt typu Feature
+   * @return boolean True jezeli sa takie same, False jezeli sa rozne
+   */
+  public static function compare($feaOne,$feaTwo){
+    if($feaOne->getName()!=$feaTwo->getName()) return false;
+    if($feaOne->getIsAdv()!=$feaTwo->getIsAdv()) return false;
+
+    return true;
+  }
+
+  /**
+   * Metoda do ustawienia czy Feature jest wada czy zaleta
+   * @param $pIsAdv 1 jezeli zaleta, 0 jezeli wada
+   */
+  public function setIsAdv($pIsAdv){
+    $this->isAdv = $pIsAdv;
+  }
+  
+  /**
+   * Metoda do ustawienia nazwy
+   * @param $pName nazwa
+   */
+  public function setName($pName){
+      $this->name = $pName;
+  }
+
+  /**
+   * Metoda do sprawdzenia czy obiekt jest wada czy zaleta
+   * @return boolean 1 jezeli zaleta, 0 jezeli wada
+   */
+  public function getIsAdv(){
+    return trim($this->isAdv);
+  }
+  
+  /**
+   * Metoda do pobrania nazwy
+   * @return String nazwa
+   */
+  public function getName(){
+      return $this->name;
+  }
+
+  /**
+   * Metoda do rzutowania obiektu na typ String
+   */
+public function __toString(){
+  return '"'.$this->name.'"';
+}
+
+}
+
+ ?>
+
