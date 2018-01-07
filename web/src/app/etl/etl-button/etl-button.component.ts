@@ -10,7 +10,7 @@ import { flowControl } from '../../models';
 export class EtlButtonComponent {
 
   @Input() 
-  private buttonFlowControl : flowControl;
+  public buttonFlowControl : flowControl;
   
   constructor() { }
 
